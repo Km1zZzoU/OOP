@@ -1,9 +1,13 @@
 package org.nsu.syspro;
 
+/**
+ * class with sort
+ */
 class HeapSort {
 
     /**
      * swap i and j in arr
+     *
      * @param arr
      * @param i
      * @param j
