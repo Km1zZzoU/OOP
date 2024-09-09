@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Random;
 
-/** class for Tests
+/**
+ * class for Tests
  */
 public class Tests {
 
-    /**Correctness testing
+    /**
+     * Correctness testing
      */
     public static void test(int[] arr) {
         int[] copy = arr.clone();
@@ -20,10 +22,8 @@ public class Tests {
         assertArrayEquals(arr, copy);
     }
 
-    /** generate random array with len=len
-     *
-     * @param len
-     * @return
+    /**
+     * generate random array with len=len
      */
     int[] randomarray(int len) {
         Random random = new Random();
@@ -34,7 +34,8 @@ public class Tests {
         return arr;
     }
 
-    /**st tests
+    /**
+     * st tests
      */
 
     @Test
@@ -91,7 +92,8 @@ public class Tests {
         test(arr);
     }
 
-    /** test height
+    /**
+     *  test height
      *     *           *         *
      *    / \   and   /    and
      *   *   *       *

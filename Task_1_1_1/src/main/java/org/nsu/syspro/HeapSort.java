@@ -1,11 +1,15 @@
 package org.nsu.syspro;
 
 /**
- * class with sort
+ * main class
  */
-class HeapSort {
+public class HeapSort {
 
     /**swap i and j in arr
+     *
+     * @param arr - arr
+     * @param i - first ind
+     * @param j - second ind
      */
     public static void swap(int[] arr, int i, int j) {
         if (i == j) {
@@ -16,6 +20,11 @@ class HeapSort {
         arr[j] -= arr[i];
     }
 
+    /**
+     * main sort
+     *
+     * @param arr - arr
+     */
     public static void sort(int[] arr) {
         if (arr == null || arr.length == 0) {
             return;
@@ -36,6 +45,10 @@ class HeapSort {
     }
 
     /**sift the element down if thi necessary
+     *
+     * @param arr - arr
+     * @param n - len
+     * @param i - index
      */
     public static void sift(int[] arr, int n, int i) {
         int v = i;
