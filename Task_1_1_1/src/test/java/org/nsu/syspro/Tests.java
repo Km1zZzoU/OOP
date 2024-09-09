@@ -2,20 +2,16 @@ package org.nsu.syspro;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Random;
 
-import org.junit.jupiter.api.Test;
-
-/**
- *  class for Tests
+/** class for Tests
  */
 public class Tests {
 
-    /**
-     * Correctness testing
-     *
-     * @param arr
+    /**Correctness testing
      */
     public static void test(int[] arr) {
         int[] copy = arr.clone();
@@ -24,8 +20,7 @@ public class Tests {
         assertArrayEquals(arr, copy);
     }
 
-    /**
-     *  generate random array with len=len
+    /** generate random array with len=len
      *
      * @param len
      * @return
@@ -39,8 +34,7 @@ public class Tests {
         return arr;
     }
 
-    /**
-     * st tests
+    /**st tests
      */
 
     @Test
@@ -97,8 +91,7 @@ public class Tests {
         test(arr);
     }
 
-    /**
-     *  test height
+    /** test height
      *     *           *         *
      *    / \   and   /    and
      *   *   *       *
