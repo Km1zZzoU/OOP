@@ -2,13 +2,13 @@ package org.nsu.syspro;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import java.util.Random;
 import java.util.Arrays;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
 /**
- * class for Tests
+ *  class for Tests
  */
 public class Tests {
 
@@ -17,7 +17,7 @@ public class Tests {
      *
      * @param arr
      */
-    public static void Test(int[] arr) {
+    public static void test(int[] arr) {
         int[] copy = arr.clone();
         HeapSort.sort(arr);
         Arrays.sort(copy);
@@ -25,11 +25,12 @@ public class Tests {
     }
 
     /**
-     * generate random array with len=len
+     *  generate random array with len=len
+     *
      * @param len
      * @return
      */
-    int[] RandomArray(int len) {
+    int[] randomarray(int len) {
         Random random = new Random();
         int[] arr = new int[len];
         for (int i = 0; i < len; i++) {
@@ -45,70 +46,69 @@ public class Tests {
     @Test
     void testHeapSort() {
         int[] arr = new int[]{4, 7, 8, 10, 3, 7, 10};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testEmptyArray() {
         int[] arr = new int[]{};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testSingleElement() {
         int[] arr = new int[]{42};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testSortedArray() {
         int[] arr = new int[]{1, 2, 3, 4, 5};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testReverseSortedArray() {
         int[] arr = new int[]{5, 4, 3, 2, 1};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testArrayWithDuplicates() {
         int[] arr = new int[]{5, 1, 5, 3, 1, 5, 2};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testAllSameElements() {
         int[] arr = new int[]{7, 7, 7, 7, 7};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testArrayWithNegativeNumbers() {
         int[] arr = new int[]{-3, -1, -7, 0, 2, 5, -2};
-        Test(arr);
+        test(arr);
     }
 
     @Test
     void testArrayWithMinMaxIntegers() {
         int[] arr = new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -1, 1};
-        Test(arr);
+        test(arr);
     }
 
     /**
-     * test height
+     *  test height
      *     *           *         *
      *    / \   and   /    and
      *   *   *       *
-     *
      */
     @Test
     void testAnySize() {
         int h = 4;
         for (int i = (int) Math.pow(2, (h - 1)); i < (int) Math.pow(2, h); i++) {
-            int[] arr = RandomArray(i);
-            Test(arr);
+            int[] arr = randomarray(i);
+            test(arr);
         }
     }
 }
