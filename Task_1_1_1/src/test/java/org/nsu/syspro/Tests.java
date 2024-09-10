@@ -8,12 +8,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * class for Tests
+ * class for Tests.
  */
 public class Tests {
 
     /**
-     * Correctness testing
+     * Correctness testing.
      */
     public static void test(int[] arr) {
         int[] copy = arr.clone();
@@ -23,7 +23,7 @@ public class Tests {
     }
 
     /**
-     * generate random array with len=len
+     * generate random array with len=len.
      */
     int[] randomarray(int len) {
         Random random = new Random();
@@ -35,7 +35,7 @@ public class Tests {
     }
 
     /**
-     * st tests
+     * st tests.
      */
 
     @Test
@@ -93,7 +93,7 @@ public class Tests {
     }
 
     /**
-     *  test height
+     *  test height.
      *     *           *         *
      *    / \   and   /    and
      *   *   *       *

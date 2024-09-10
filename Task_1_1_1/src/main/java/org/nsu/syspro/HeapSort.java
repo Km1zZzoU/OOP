@@ -1,11 +1,11 @@
 package org.nsu.syspro;
 
 /**
- * main class
+ * main class.
  */
 public class HeapSort {
 
-    /**swap i and j in arr
+    /**swap i and j in arr.
      *
      * @param arr - arr
      * @param i - first ind
@@ -21,7 +21,7 @@ public class HeapSort {
     }
 
     /**
-     * main sort
+     * main sort.
      *
      * @param arr - arr
      */
@@ -44,7 +44,7 @@ public class HeapSort {
         }
     }
 
-    /**sift the element down if thi necessary
+    /**sift the element down if thi necessary.
      *
      * @param arr - arr
      * @param n - len
