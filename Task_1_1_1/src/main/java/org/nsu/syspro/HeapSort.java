@@ -1,7 +1,7 @@
 package org.nsu.syspro;
 
 /**
- * main class.
+ * main class for function sort.
  */
 public class HeapSort {
 
@@ -21,7 +21,8 @@ public class HeapSort {
     }
 
     /**
-     * main sort.
+     * main function sort.
+     * in a loop turns the array into a heap and moves the element from the head to the end.
      *
      * @param arr - arr
      */
@@ -31,13 +32,13 @@ public class HeapSort {
         }
         int length = arr.length;
 
-        /* array ---> heap
-         */
+        // array ---> heap
+
         for (int i = length / 2 - 1; i >= 0; i--) {
             sift(arr, length, i);
         }
-        /* swap max to end and new array (len n-1) ---> heap
-         */
+        // swap max to end and new array (len n-1) ---> heap
+
         for (int i = length - 1; i >= 0; i--) {
             swap(arr, 0, i);
             sift(arr, i, 0);
@@ -65,9 +66,6 @@ public class HeapSort {
 
         if (v != i) {
             swap(arr, i, v);
-            /*
-             * recursion))))
-             */
             sift(arr, n, v);
         }
     }

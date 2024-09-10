@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * class for Tests.
+ * class for function test and st utests.
  */
 public class Tests {
 
@@ -34,9 +34,7 @@ public class Tests {
         return arr;
     }
 
-    /**
-     * st tests.
-     */
+    // st tests.
 
     @Test
     void testHeapSort() {
@@ -93,7 +91,7 @@ public class Tests {
     }
 
     /**
-     *  test height.
+     *  test any heaps current height.
      *     *           *         *
      *    / \   and   /    and
      *   *   *       *
