@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 /**
  * class Parent all our classes.
- * need fo something utils (dictNames and wait)
+ * need fo something utils (dictNames and wait).
  */
 public class Utils {
     HashMap<Byte, String> dictNames;
 
     /**
-     * Build dict for translte int to name
+     * Build dict for translte int to name.
      */
     public Utils() {
         dictNames = new HashMap<>();
@@ -31,9 +31,9 @@ public class Utils {
     }
 
     /**
-     * wait n seconds for smoother gameplay
+     * wait n seconds for smoother gameplay.
      *
-     * @param seconds seconds
+     * @param seconds seconds.
      */
     public void wait(int seconds) {
         try {

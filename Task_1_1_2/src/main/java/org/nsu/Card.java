@@ -8,7 +8,7 @@ public class Card extends Utils {
     byte value;
 
     /**
-     * Constructor Card from type and value
+     * Constructor Card from type and value.
      *
      * @param typeCard :
      * @param valueCard : 1 - 14 (1 - overAce, 11 - j ... 14 - Ace)
@@ -20,7 +20,7 @@ public class Card extends Utils {
     }
 
     /**
-     * @return count of card
+     * @return count of card.
      */
     byte getCount() {
         if (value == 14)

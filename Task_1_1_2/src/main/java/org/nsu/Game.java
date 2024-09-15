@@ -13,8 +13,8 @@ class Round extends Game {
     /**
      * init 2 cards for player and 1 card for dealer.
      *
-     * @param number - number of round
-     * @param deck   - do not create new deck, take deck from field of Game
+     * @param number - number of round.
+     * @param deck   - do not create new deck, take deck from field of Game.
      */
     public Round(int number, Deck deck) {
         if (deck == null) {
@@ -81,8 +81,8 @@ class Round extends Game {
     /**
      * void function for base step of round. Take card from deck, print card and add card to hand.
      *
-     * @param msg   message from player/dealer
-     * @param cards cards from hand player/dealer
+     * @param msg   message from player/dealer.
+     * @param cards cards from hand player/dealer.
      */
     public void move(String msg, Cards cards) {
         if (cards == null) {
@@ -98,9 +98,9 @@ class Round extends Game {
     }
 
     /**
-     * Player move. call function move and return false if player lose
+     * Player move. call function move and return false if player lose.
      *
-     * @return true - player do not win / false - player lose
+     * @return true - player do not win / false - player lose.
      */
     public boolean movePlayer() {
         move("Вы открыли карту ", playerCards);
@@ -108,7 +108,7 @@ class Round extends Game {
     }
 
     /**
-     * Dealer move. in cycle dealer take card. When sum(cards) >= 17 return;
+     * Dealer move. in cycle dealer take card. When sum(cards) >= 17 return;.
      */
     public void moveDealer() {
         while (dealerCards.sum < 17) {
@@ -119,7 +119,7 @@ class Round extends Game {
 }
 
 /**
- * class Game when is played all game. have 4 field: score for player and dealer, number of round
+ * class Game when is played all game. have 4 field: score for player and dealer, number of round.
  * and deck.
  */
 public class Game extends Utils {
@@ -130,7 +130,7 @@ public class Game extends Utils {
     Deck deck;
 
     /**
-     * init score = 0 and round = 1
+     * init score = 0 and round = 1.
      */
     public Game() {
         playerScore = 0;
@@ -140,7 +140,7 @@ public class Game extends Utils {
     }
 
     /**
-     * main function all program. In cycle run rounds while in Deck >= n cards
+     * main function all program. In cycle run rounds while in Deck >= n cards.
      */
     public void play() {
         System.out.print("Добро пожаловать в Блэкджек!\n");

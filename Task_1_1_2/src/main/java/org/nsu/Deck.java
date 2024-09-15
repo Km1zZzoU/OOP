@@ -10,11 +10,11 @@ import java.util.Random;
 public class Deck extends Utils{
 
     /**
-     * size of Deck
+     * size of Deck.
      */
     public Byte size;
     /**
-     * current cards of deck
+     * current cards of deck.
      */
     public Card[] cards;
 
@@ -32,7 +32,7 @@ public class Deck extends Utils{
     }
 
     /**
-     * delete card and copy all cards after on index++
+     * delete card and copy all cards after on index++.
      *
      * @param index of delCard
      */
@@ -44,9 +44,9 @@ public class Deck extends Utils{
     }
 
     /**
-     * pop and delete card with random
+     * pop and delete card with random.
      *
-     * @return random card
+     * @return random card.
      */
     public Card popCard() {
         Random rand = new Random();

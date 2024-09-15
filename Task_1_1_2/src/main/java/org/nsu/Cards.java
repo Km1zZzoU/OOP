@@ -3,22 +3,22 @@ package org.nsu;
 import java.util.ArrayList;
 
 /**
- * array cards, have fields: cards, sum realsum (with/wthout  Ace)
+ * array cards, have fields: cards, sum realsum (with/wthout  Ace).
  */
 public class Cards extends Utils {
 
     /**
-     * field for cards, have method toString
+     * field for cards, have method toString.
      */
     public ArrayList<Card> cards;
     /**
-     * field for current sum for cards
+     * field for current sum for cards.
      */
     public Integer sum;
     int realSum;
 
     /**
-     * Constructor, init cards = ArratList and sums
+     * Constructor, init cards = ArratList and sums.
      */
     public Cards() {
         cards = new ArrayList<>();
@@ -27,7 +27,8 @@ public class Cards extends Utils {
     }
 
     /**
-     * function for append card to cards and to calculate sum and realSum
+     * function for append card to cards and to calculate sum and realSum.
+     *
      * @param card card
      */
     public void append(Card card) {
@@ -49,7 +50,8 @@ public class Cards extends Utils {
     }
 
     /**
-     * method cards to string
+     * method cards to string.
+     *
      * @return string
      */
     public String cards2String() {

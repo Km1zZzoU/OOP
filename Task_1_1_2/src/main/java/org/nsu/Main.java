@@ -1,7 +1,7 @@
 package org.nsu;
 
 /**
- * main class
+ * main class.
  */
 class Main {
 

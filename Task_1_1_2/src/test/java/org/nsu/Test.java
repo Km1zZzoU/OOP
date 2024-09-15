@@ -1,11 +1,10 @@
 package org.nsu;
 
 import java.util.Arrays;
-import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Assertions;
 
-class TestBJ {
+class Test {
 
     void assertEq(String name, Card card) {
         Assertions.assertEquals(name, card.toString());
@@ -27,7 +26,7 @@ class TestBJ {
         assertEq("Пятерка Крести (5)", new Card("Крести", (byte) 5));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testSuma() {
         Cards cards = new Cards();
         cards.append(new Card("Бубей", (byte) 2));
@@ -38,14 +37,14 @@ class TestBJ {
         Assertions.assertEquals(cards.sum, 15);
         cards.append(new Card("Черви", (byte) 14));
         Assertions.assertEquals(cards.sum, 16);
-        Cards Aces = new Cards();
-        Aces.append(new Card("Черви", (byte) 14));
-        Assertions.assertEquals(Aces.sum, 11);
-        Aces.append(new Card("Бубей", (byte) 14));
-        Assertions.assertEquals(Aces.sum, 2);
+        Cards aces = new Cards();
+        aces.append(new Card("Черви", (byte) 14));
+        Assertions.assertEquals(aces.sum, 11);
+        aces.append(new Card("Бубей", (byte) 14));
+        Assertions.assertEquals(aces.sum, 2);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testDeck() {
         Deck deck = new Deck();
         Assertions.assertEquals((int) deck.size, 52);
