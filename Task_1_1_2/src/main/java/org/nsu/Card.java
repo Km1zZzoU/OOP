@@ -20,11 +20,14 @@ public class Card extends Utils {
     }
 
     /**
+     * return count of card.
+     *
      * @return count of card.
      */
     byte getCount() {
-        if (value == 14)
+        if (value == 14) {
             return 11;
+        }
         return value > 10 ? 10 : value;
     }
 

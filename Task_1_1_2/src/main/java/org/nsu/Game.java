@@ -3,6 +3,49 @@ package org.nsu;
 import java.util.Scanner;
 
 /**
+ * class Game when is played all game. have 4 field: score for player and dealer, number of round.
+ * and deck.
+ */
+public class Game extends Utils {
+
+    int playerScore;
+    int dealerScore;
+    int roundNumber;
+    Deck deck;
+
+    /**
+     * init score = 0 and round = 1.
+     */
+    public Game() {
+        playerScore = 0;
+        dealerScore = 0;
+        roundNumber = 1;
+        //dont init deck
+    }
+
+    /**
+     * main function all program. In cycle run rounds while in Deck >= n cards.
+     */
+    public void play() {
+        System.out.print("Добро пожаловать в Блэкджек!\n");
+        deck = new Deck();
+        while (deck.size >= 13) {
+            Round round = new Round(roundNumber++, deck);
+            String resultMsg = "";
+            if (round.start()) {
+                playerScore++;
+                resultMsg = resultMsg.concat("Вы выиграли раунд!");
+            } else {
+                dealerScore++;
+                resultMsg = resultMsg.concat("Победа за дилером!");
+            }
+            System.out.printf(resultMsg + " Счет %d:%d\n", playerScore, dealerScore);
+            wait(3);
+        }
+    }
+}
+
+/**
  * class child of game. have 2 field, init from 2 args: number of round and deck.
  */
 class Round extends Game {
@@ -114,49 +157,6 @@ class Round extends Game {
         while (dealerCards.sum < 17) {
             move("Дилер открывает карту ", dealerCards);
             wait(2);
-        }
-    }
-}
-
-/**
- * class Game when is played all game. have 4 field: score for player and dealer, number of round.
- * and deck.
- */
-public class Game extends Utils {
-
-    int playerScore;
-    int dealerScore;
-    int roundNumber;
-    Deck deck;
-
-    /**
-     * init score = 0 and round = 1.
-     */
-    public Game() {
-        playerScore = 0;
-        dealerScore = 0;
-        roundNumber = 1;
-        //dont init deck
-    }
-
-    /**
-     * main function all program. In cycle run rounds while in Deck >= n cards.
-     */
-    public void play() {
-        System.out.print("Добро пожаловать в Блэкджек!\n");
-        deck = new Deck();
-        while (deck.size >= 13) {
-            Round round = new Round(roundNumber++, deck);
-            String resultMsg = "";
-            if (round.start()) {
-                playerScore++;
-                resultMsg = resultMsg.concat("Вы выиграли раунд!");
-            } else {
-                dealerScore++;
-                resultMsg = resultMsg.concat("Победа за дилером!");
-            }
-            System.out.printf(resultMsg + " Счет %d:%d\n", playerScore, dealerScore);
-            wait(3);
         }
     }
 }
