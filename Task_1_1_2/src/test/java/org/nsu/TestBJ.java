@@ -1,8 +1,7 @@
-package org.nsu.Test;
+package org.nsu;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
-import org.nsu.*;
 
 import org.junit.jupiter.api.Assertions;
 
