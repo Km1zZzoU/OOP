@@ -20,6 +20,7 @@ public class Deck extends Utils{
 
     /**
      * Construct cards where made all cards and append to field cards.
+     * @param count count of Decks
      */
     public Deck(int count) {
         size = 52 * count;

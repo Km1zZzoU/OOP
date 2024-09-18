@@ -42,6 +42,7 @@ public class Round {
     /**
      * ask player and scan answer.
      *
+     * @param question question
      * @return answer
      */
     public static int ask(String question) {
@@ -116,7 +117,7 @@ public class Round {
     }
 
     /**
-     * Dealer move. in cycle dealer take card. When sum(cards) >= 17 return;.
+     * Dealer move. in cycle dealer take card. When sum(cards) more then 17 return;.
      */
     public void moveDealer() {
         while (dealerCards.sum < 17) {

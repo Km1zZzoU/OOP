@@ -24,7 +24,7 @@ public class Game {
     }
 
     /**
-     * main function all program. In cycle run rounds while in Deck >= n cards.
+     * main function all program. In cycle run rounds while in Deck more then n cards.
      */
     public static void play() {
         System.out.print("Добро пожаловать в Блэкджек!\n");
