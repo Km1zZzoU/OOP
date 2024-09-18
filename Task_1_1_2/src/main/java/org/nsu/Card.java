@@ -3,7 +3,7 @@ package org.nsu;
 /**
  * Card have type and value have method getCount, and override toString.
  */
-public class Card extends Utils {
+public class Card {
     String type;
     byte value;
 
@@ -33,6 +33,6 @@ public class Card extends Utils {
 
     @Override
     public String toString() {
-        return dictNames.get(value) + " " + type + " (" + getCount() + ")";
+        return Utils.get(value) + " " + type + " (" + getCount() + ")";
     }
 }

@@ -12,7 +12,7 @@ public class Deck extends Utils{
     /**
      * size of Deck.
      */
-    public Byte size;
+    public Integer size;
     /**
      * current cards of deck.
      */
@@ -21,13 +21,13 @@ public class Deck extends Utils{
     /**
      * Construct cards where made all cards and append to field cards.
      */
-    public Deck() {
-        cards = new Card[52];
-        size = 52;
+    public Deck(int count) {
+        size = 52 * count;
+        cards = new Card[size];
         String[] types = {"Бубей", "Черви", "Пик", "Крести"};
         Byte[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         for (int i = 0; i < size; i++) {
-            cards[i] = new Card(types[i % 4], values[i / 4]);
+            cards[i] = new Card(types[i % 4], values[(i % 52) / 4]);
         }
     }
 

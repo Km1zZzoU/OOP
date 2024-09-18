@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * array cards, have fields: cards, sum realsum (with/wthout  Ace).
  */
-public class Cards extends Utils {
+public class Cards {
 
     /**
      * field for cards, have method toString.

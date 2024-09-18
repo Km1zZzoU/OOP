@@ -11,7 +11,6 @@ class Main {
      * @param args idk
      */
     public static void main(String[] args) {
-        Game game = new Game();
-        game.play();
+        Game.play();
     }
 }

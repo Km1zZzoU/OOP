@@ -46,7 +46,7 @@ class Test {
 
     @org.junit.jupiter.api.Test
     void testDeck() {
-        Deck deck = new Deck();
+        Deck deck = new Deck(1);
         Assertions.assertEquals((int) deck.size, 52);
         Card card = deck.popCard();
         Assertions.assertEquals((int) deck.size, 51);

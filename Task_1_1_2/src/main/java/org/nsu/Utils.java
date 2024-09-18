@@ -1,33 +1,32 @@
 package org.nsu;
 
-import java.util.HashMap;
-
 /**
  * class Parent all our classes.
  * need fo something utils (dictNames and wait).
  */
 public class Utils {
-    HashMap<Byte, String> dictNames;
-
     /**
-     * Build dict for translte int to name.
+     * return correct string.
+     *
+     * @param value [1, 14]
+     * @return string
      */
-    public Utils() {
-        dictNames = new HashMap<>();
-        dictNames.put((byte) 2, "Двойка");
-        dictNames.put((byte) 3, "Тройка");
-        dictNames.put((byte) 4, "Четверка");
-        dictNames.put((byte) 5, "Пятерка");
-        dictNames.put((byte) 6, "Шестерка");
-        dictNames.put((byte) 7, "Семерка");
-        dictNames.put((byte) 8, "Восьмерка");
-        dictNames.put((byte) 9, "Девятка");
-        dictNames.put((byte) 10, "Десятка");
-        dictNames.put((byte) 11, "Валет");
-        dictNames.put((byte) 12, "Дама");
-        dictNames.put((byte) 13, "Король");
-        dictNames.put((byte) 14, "Туз");
-        dictNames.put((byte) 1, "Туз");
+    public static String get(byte value) {
+        return switch (value) {
+            case 2 -> "Двойка";
+            case 3 -> "Тройка";
+            case 4 -> "Четверка";
+            case 5 -> "Пятерка";
+            case 6 -> "Шестерка";
+            case 7 -> "Семерка";
+            case 8 -> "Восьмерка";
+            case 9 -> "Девятка";
+            case 10 -> "Десятка";
+            case 11 -> "Валет";
+            case 12 -> "Дама";
+            case 13 -> "Король";
+            default -> "Туз";
+        };
     }
 
     /**
@@ -35,7 +34,7 @@ public class Utils {
      *
      * @param seconds seconds.
      */
-    public void wait(int seconds) {
+    public static void wait(int seconds) {
         try {
             Thread.sleep(1000L * seconds);
         } catch(InterruptedException ignored) {}
