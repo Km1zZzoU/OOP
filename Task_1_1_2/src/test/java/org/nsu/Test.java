@@ -52,4 +52,23 @@ class Test {
         Assertions.assertEquals((int) deck.size, 51);
         Assertions.assertFalse(Arrays.asList(deck.cards).contains(card));
     }
+
+    @org.junit.jupiter.api.Test
+    void testCard2String() {
+        Cards cards = new Cards();
+        cards.append(new Card("Бубей", (byte) 2));
+        cards.append(new Card("Пик", (byte) 13));
+        cards.append(new Card("Пик", (byte) 14));
+        Assertions.assertEquals(cards.cards2String(), "[Двойка Бубей (2), Король Пик (10), Туз Пик (1)] ==> (13)");
+        Assertions.assertEquals(13, cards.sum);
+        Assertions.assertEquals(23, cards.realSum);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testUtils() {
+        Assertions.assertEquals(Utils.get((byte) 2), "Двойка");
+        Assertions.assertEquals(Utils.get((byte) 7), "Семерка");
+        Assertions.assertEquals(Utils.get((byte) 11), "Валет");
+        Assertions.assertEquals(Utils.get((byte) 14), "Туз");
+    }
 }
