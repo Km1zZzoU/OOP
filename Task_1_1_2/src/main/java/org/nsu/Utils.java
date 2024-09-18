@@ -12,21 +12,47 @@ public class Utils {
      * @return string
      */
     public static String get(byte value) {
-        return switch (value) {
-            case 2 -> "Двойка";
-            case 3 -> "Тройка";
-            case 4 -> "Четверка";
-            case 5 -> "Пятерка";
-            case 6 -> "Шестерка";
-            case 7 -> "Семерка";
-            case 8 -> "Восьмерка";
-            case 9 -> "Девятка";
-            case 10 -> "Десятка";
-            case 11 -> "Валет";
-            case 12 -> "Дама";
-            case 13 -> "Король";
-            default -> "Туз";
-        };
+        switch (value) {
+            case 2: {
+                return "Двойка";
+            }
+            case 3: {
+                return "Тройка";
+            }
+            case 4: {
+                return "Четверка";
+            }
+            case 5: {
+                return "Пятерка";
+            }
+            case 6: {
+                return "Шестерка";
+            }
+            case 7: {
+                return "Семерка";
+            }
+            case 8: {
+                return "Восьмерка";
+            }
+            case 9: {
+                return "Девятка";
+            }
+            case 10: {
+                return "Десятка";
+            }
+            case 11: {
+                return "Валет";
+            }
+            case 12: {
+                return "Дама";
+            }
+            case 13: {
+                return "Король";
+            }
+            default: {
+                return "Туз";
+            }
+        }
     }
 
     /**
