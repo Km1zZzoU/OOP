@@ -132,7 +132,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Round</span>
 extends java.lang.Object</pre>
-<div class="block">class child of game. have 2 field, init from 2 args: number of round and deck.</div>
+<div class="block">class for actions into round.
+ init new in cycle in game.</div>
 </li>
 </ul>
 </div>
@@ -153,8 +154,8 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,org.nsu.Deck)">Round</a></span>&#8203;(int&nbsp;number,
-     <a href="Deck.html" title="class in org.nsu">Deck</a>&nbsp;deck)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,org.nsu.Decks)">Round</a></span>&#8203;(int&nbsp;number,
+     <a href="Decks.html" title="class in org.nsu">Decks</a>&nbsp;decks)</code></th>
 <td class="colLast">
 <div class="block">init 2 cards for player and 1 card for dealer.</div>
 </td>
@@ -186,8 +187,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#move(java.lang.String,org.nsu.Cards)">move</a></span>&#8203;(java.lang.String&nbsp;msg,
-    <a href="Cards.html" title="class in org.nsu">Cards</a>&nbsp;cards)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#move(java.lang.String,org.nsu.HandCards)">move</a></span>&#8203;(java.lang.String&nbsp;msg,
+    <a href="HandCards.html" title="class in org.nsu">HandCards</a>&nbsp;cards)</code></th>
 <td class="colLast">
 <div class="block">void function for base step of round.</div>
 </td>
@@ -244,19 +245,19 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(int,org.nsu.Deck)">
+<a id="&lt;init&gt;(int,org.nsu.Decks)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Round</h4>
 <pre>public&nbsp;Round&#8203;(int&nbsp;number,
-             <a href="Deck.html" title="class in org.nsu">Deck</a>&nbsp;deck)</pre>
+             <a href="Decks.html" title="class in org.nsu">Decks</a>&nbsp;decks)</pre>
 <div class="block">init 2 cards for player and 1 card for dealer.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>number</code> - - number of round.</dd>
-<dd><code>deck</code> - - do not create new deck, take deck from field of Game.</dd>
+<dd><code>decks</code> - - do not create new decks, take decks from field of Game.</dd>
 </dl>
 </li>
 </ul>
@@ -310,15 +311,15 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="move(java.lang.String,org.nsu.Cards)">
+<a id="move(java.lang.String,org.nsu.HandCards)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>move</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;move&#8203;(java.lang.String&nbsp;msg,
-                 <a href="Cards.html" title="class in org.nsu">Cards</a>&nbsp;cards)</pre>
-<div class="block">void function for base step of round. Take card from deck, print card and add card to hand.</div>
+                 <a href="HandCards.html" title="class in org.nsu">HandCards</a>&nbsp;cards)</pre>
+<div class="block">void function for base step of round. Take card from decks, print card and add card to hand.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>msg</code> - message from player/dealer.</dd>
