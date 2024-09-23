@@ -12,7 +12,9 @@ public class Utils {
     public static void wait(int seconds) {
         try {
             Thread.sleep(1000L * seconds);
-        } catch(InterruptedException ignored) {}
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

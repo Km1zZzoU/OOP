@@ -33,7 +33,7 @@ public class HandCards {
             for (Card cardIter : cards) {
                 if (cardIter.value == Card.Ace) {
                     cardIter.value = Card.AceOne;
-                    sum -= (Card.Ace - Card.AceOne);
+                    sum -= 10;
                 }
             }
         }

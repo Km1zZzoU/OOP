@@ -29,18 +29,18 @@ class TestBJ {
     @org.junit.jupiter.api.Test
     void testSuma() {
         HandCards cards = new HandCards();
-        cards.append(new Card("Бубей", (byte) 2));
-        cards.append(new Card("Черви", (byte) 5));
-        cards.append(new Card("Бубей", (byte) 7));
+        cards.append(new Card("Бубей", Card.two));
+        cards.append(new Card("Черви", Card.five));
+        cards.append(new Card("Бубей", Card.seven));
         Assertions.assertEquals(cards.sum, 14);
-        cards.append(new Card("Бубей", (byte) 14));
+        cards.append(new Card("Бубей", Card.Ace));
         Assertions.assertEquals(cards.sum, 15);
-        cards.append(new Card("Черви", (byte) 14));
+        cards.append(new Card("Черви", Card.Ace));
         Assertions.assertEquals(cards.sum, 16);
         HandCards aces = new HandCards();
-        aces.append(new Card("Черви", (byte) 14));
+        aces.append(new Card("Черви", Card.Ace));
         Assertions.assertEquals(aces.sum, 11);
-        aces.append(new Card("Бубей", (byte) 14));
+        aces.append(new Card("Бубей", Card.Ace));
         Assertions.assertEquals(aces.sum, 2);
     }
 
