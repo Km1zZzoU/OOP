@@ -3,6 +3,7 @@ package org.nsu;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class TestBJ {
 
@@ -74,5 +75,31 @@ class TestBJ {
         Assertions.assertEquals(Card.get((byte) 7), "Семерка");
         Assertions.assertEquals(Card.get((byte) 11), "Валет");
         Assertions.assertEquals(Card.get((byte) 14), "Туз");
+    }
+
+    @org.junit.jupiter.api.Test
+    void testWait() {
+        try {
+            Utils.wait(1);
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void testRound() {
+        Round round = new Round(1, new Decks(1));
+        try {
+            Assertions.assertEquals(round.decks.size, 52 - 3);
+            Assertions.assertEquals(round.playerCards.cards.size(), 2);
+            Assertions.assertEquals(round.dealerCards.cards.size(), 1);
+            round.printCards();
+            round.move("1", round.playerCards);
+            round.move("2", round.dealerCards);
+            round.moveDealer();
+            round.movePlayer();
+        } catch (Exception e) {
+            Assertions.fail();
+        }
     }
 }
