@@ -4,31 +4,32 @@ package org.nsu;
 import java.util.Scanner;
 
 /**
- * class child of game. have 2 field, init from 2 args: number of round and deck.
+ * class for actions into round.
+ * init new in cycle in game.
  */
 public class Round {
 
-    Cards playerCards = new Cards();
-    Cards dealerCards = new Cards();
-    Deck deck;
+    HandCards playerCards = new HandCards();
+    HandCards dealerCards = new HandCards();
+    Decks decks;
 
     /**
      * init 2 cards for player and 1 card for dealer.
      *
      * @param number - number of round.
-     * @param deck   - do not create new deck, take deck from field of Game.
+     * @param decks   - do not create new decks, take decks from field of Game.
      */
-    public Round(int number, Deck deck) {
-        if (deck == null) {
+    public Round(int number, Decks decks) {
+        if (decks == null) {
             return;
         }
 
-        this.deck = deck;
-        System.out.printf("Раунд %d\nВ игре %d карт\n", number, deck.size);
+        this.decks = decks;
+        System.out.printf("Раунд %d\nВ игре %d карт\n", number, decks.size);
         Utils.wait(1);
-        playerCards.append(deck.popCard());
-        dealerCards.append(deck.popCard());
-        playerCards.append(deck.popCard());
+        playerCards.append(decks.popCard());
+        dealerCards.append(decks.popCard());
+        playerCards.append(decks.popCard());
     }
 
     /**
@@ -88,16 +89,16 @@ public class Round {
     }
 
     /**
-     * void function for base step of round. Take card from deck, print card and add card to hand.
+     * void function for base step of round. Take card from decks, print card and add card to hand.
      *
      * @param msg   message from player/dealer.
      * @param cards cards from hand player/dealer.
      */
-    public void move(String msg, Cards cards) {
+    public void move(String msg, HandCards cards) {
         if (cards == null) {
             return;
         }
-        Card newCard = deck.popCard();
+        Card newCard = decks.popCard();
         System.out.print("+------------------------------------------------\n");
         System.out.print("| " + msg + newCard.toString() + "\n");
         System.out.print("+------------------------------------------------\n");

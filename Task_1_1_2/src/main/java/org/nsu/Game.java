@@ -1,27 +1,21 @@
 package org.nsu;
 
 /**
- * class Game when is played all game. have 4 field: score for player and dealer, number of round.
- * and deck.
+ * class Game where is played all game.
  */
 public class Game {
 
+    private static int win = 1;
+    private static int lose = -1;
+    private static int draw = 0;
+
     static int playerScore;
     static int dealerScore;
-    static int drawScore;
-    static int roundNumber;
-    public static Deck deck;
-
+    static int roundNumber = 0;
     /**
-     * init score = 0 and round = 1.
+     * decks that will be used in the game.
      */
-    public Game() {
-        playerScore = 0;
-        dealerScore = 0;
-        drawScore = 0;
-        roundNumber = 1;
-        //dont init deck
-    }
+    public static Decks decks;
 
     /**
      * main function all program. In cycle run rounds while in Deck more then n cards.
@@ -29,22 +23,21 @@ public class Game {
     public static void play() {
         System.out.print("Добро пожаловать в Блэкджек!\n");
         Utils.wait(1);
-        deck = new Deck(Round.ask("На сколько колод желаете сыграть?\n"));
-        while (deck.size >= 23) {
-            Round round = new Round(roundNumber++, deck);
+        decks = new Decks(Round.ask("На сколько колод желаете сыграть?\n"));
+        while (decks.size >= 23) {
+            Round round = new Round(++roundNumber, decks);
             String resultMsg = "";
             int res = round.start();
-            if (res == 1) {
+            if (res == win) {
                 playerScore++;
                 resultMsg = resultMsg.concat("Вы выиграли раунд!");
-            } else if (res == 0) {
-                drawScore++;
+            } else if (res == draw) {
                 resultMsg = resultMsg.concat("Ничья!");
-            } else if (res == -1) {
+            } else if (res == lose) {
                 dealerScore++;
                 resultMsg = resultMsg.concat("Победа за дилером!");
             }
-            System.out.printf(resultMsg + " Счет %d:%d:%d\n", playerScore, drawScore, dealerScore);
+            System.out.printf(resultMsg + " Счет %d:%d\n", playerScore, dealerScore);
             Utils.wait(2);
         }
     }

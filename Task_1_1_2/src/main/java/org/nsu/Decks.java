@@ -4,10 +4,12 @@ import java.util.Random;
 
 /**
  * class Deck.
- * Have 2 fields: size and ccards[].
- * Have method for pop card.
+ * needed for generate deck and actions with deck.
  */
-public class Deck extends Utils{
+public class Decks {
+    private final String[] types = {"Бубей", "Черви", "Пик", "Крести"};
+    private final Byte[] values = {Card.two, Card.three, Card.four, Card.five, Card.six, Card.seven, Card.eight, Card.nine,
+        Card.ten, Card.Jack, Card.Queen, Card.King, Card.Ace};
 
     /**
      * size of Deck.
@@ -22,18 +24,16 @@ public class Deck extends Utils{
      * Construct cards where made all cards and append to field cards.
      * @param count count of Decks
      */
-    public Deck(int count) {
+    public Decks(int count) {
         size = 52 * count;
         cards = new Card[size];
-        String[] types = {"Бубей", "Черви", "Пик", "Крести"};
-        Byte[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         for (int i = 0; i < size; i++) {
             cards[i] = new Card(types[i % 4], values[(i % 52) / 4]);
         }
     }
 
     /**
-     * delete card and copy all cards after on index++.
+     * delete a card from the deck
      *
      * @param index of delCard
      */
@@ -45,11 +45,14 @@ public class Deck extends Utils{
     }
 
     /**
-     * pop and delete card with random.
+     * pop and delete a random card.
      *
      * @return random card.
      */
     public Card popCard() {
+        if (size == 0) {
+            return null;
+        }
         Random rand = new Random();
         int index = rand.nextInt(size);
         Card returnCard = cards[index];

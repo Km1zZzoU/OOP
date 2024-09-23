@@ -3,28 +3,20 @@ package org.nsu;
 import java.util.ArrayList;
 
 /**
- * array cards, have fields: cards, sum realsum (with/wthout  Ace).
+ * class for storing and handling cards in the hands of a dealer or player.
+ * usage into Round.
  */
-public class Cards {
+public class HandCards {
 
     /**
      * field for cards, have method toString.
      */
-    public ArrayList<Card> cards;
+    public ArrayList<Card> cards = new ArrayList<>();
     /**
      * field for current sum for cards.
      */
-    public Integer sum;
-    int realSum;
-
-    /**
-     * Constructor, init cards = ArratList and sums.
-     */
-    public Cards() {
-        cards = new ArrayList<>();
-        sum = 0;
-        realSum = 0;
-    }
+    public Integer sum = 0;
+    int realSum = 0;
 
     /**
      * function for append card to cards and to calculate sum and realSum.
@@ -36,12 +28,12 @@ public class Cards {
             return;
         }
         realSum += card.getCount();
-        if (realSum > 21 && card.value == 14) {
-            card.value = 1;
+        if (realSum > 21 && card.value == Card.Ace) {
+            card.value = Card.AceOne;
             for (Card cardIter : cards) {
-                if (cardIter.value == 14) {
-                    cardIter.value -= 10;
-                    sum -= 10;
+                if (cardIter.value == Card.Ace) {
+                    cardIter.value = Card.AceOne;
+                    sum -= (Card.Ace - Card.AceOne);
                 }
             }
         }
@@ -61,6 +53,9 @@ public class Cards {
             if (i != cards.size() - 1) {
                 msgCards = msgCards.concat(", ");
             }
+        }
+        if (cards.size() == 1) {
+            msgCards = msgCards.concat(", <закрытая карта>");
         }
         msgCards = msgCards.concat("] ==> (" + sum.toString() + ")");
         return msgCards;

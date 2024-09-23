@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
 
-class Test {
+class TestBJ {
 
     void assertEq(String name, Card card) {
         Assertions.assertEquals(name, card.toString());
@@ -28,7 +28,7 @@ class Test {
 
     @org.junit.jupiter.api.Test
     void testSuma() {
-        Cards cards = new Cards();
+        HandCards cards = new HandCards();
         cards.append(new Card("Бубей", (byte) 2));
         cards.append(new Card("Черви", (byte) 5));
         cards.append(new Card("Бубей", (byte) 7));
@@ -37,7 +37,7 @@ class Test {
         Assertions.assertEquals(cards.sum, 15);
         cards.append(new Card("Черви", (byte) 14));
         Assertions.assertEquals(cards.sum, 16);
-        Cards aces = new Cards();
+        HandCards aces = new HandCards();
         aces.append(new Card("Черви", (byte) 14));
         Assertions.assertEquals(aces.sum, 11);
         aces.append(new Card("Бубей", (byte) 14));
@@ -46,16 +46,20 @@ class Test {
 
     @org.junit.jupiter.api.Test
     void testDeck() {
-        Deck deck = new Deck(1);
-        Assertions.assertEquals((int) deck.size, 52);
-        Card card = deck.popCard();
-        Assertions.assertEquals((int) deck.size, 51);
-        Assertions.assertFalse(Arrays.asList(deck.cards).contains(card));
+        Decks decks = new Decks(1);
+        Assertions.assertEquals((int) decks.size, 52);
+        Card card = decks.popCard();
+        Assertions.assertEquals((int) decks.size, 51);
+        Assertions.assertFalse(Arrays.asList(decks.cards).contains(card));
+        for (int i = 0; i < 60; i++) {
+            card = decks.popCard();
+        }
+        Assertions.assertNull(card);
     }
 
     @org.junit.jupiter.api.Test
     void testCard2String() {
-        Cards cards = new Cards();
+        HandCards cards = new HandCards();
         cards.append(new Card("Бубей", (byte) 2));
         cards.append(new Card("Пик", (byte) 13));
         cards.append(new Card("Пик", (byte) 14));
@@ -66,9 +70,9 @@ class Test {
 
     @org.junit.jupiter.api.Test
     void testUtils() {
-        Assertions.assertEquals(Utils.get((byte) 2), "Двойка");
-        Assertions.assertEquals(Utils.get((byte) 7), "Семерка");
-        Assertions.assertEquals(Utils.get((byte) 11), "Валет");
-        Assertions.assertEquals(Utils.get((byte) 14), "Туз");
+        Assertions.assertEquals(Card.get((byte) 2), "Двойка");
+        Assertions.assertEquals(Card.get((byte) 7), "Семерка");
+        Assertions.assertEquals(Card.get((byte) 11), "Валет");
+        Assertions.assertEquals(Card.get((byte) 14), "Туз");
     }
 }

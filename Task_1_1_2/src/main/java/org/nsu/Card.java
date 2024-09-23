@@ -6,6 +6,21 @@ package org.nsu;
 public class Card {
     String type;
     byte value;
+    static final byte AceOne = 1;
+    static final byte two = 2;
+    static final byte three = 3;
+    static final byte four = 4;
+    static final byte five = 5;
+    static final byte six = 6;
+    static final byte seven = 7;
+    static final byte eight = 8;
+    static final byte nine = 9;
+    static final byte ten = 10;
+    static final byte Jack = 11;
+    static final byte Queen = 12;
+    static final byte King = 13;
+    static final byte Ace = 14;
+
 
     /**
      * Constructor Card from type and value.
@@ -25,14 +40,65 @@ public class Card {
      * @return count of card.
      */
     byte getCount() {
-        if (value == 14) {
+        if (value == Ace) {
             return 11;
         }
-        return value > 10 ? 10 : value;
+        return value > ten ? ten : value;
     }
+
+    /**
+     * returns the correct string name on russian by value card.
+     *
+     * @param value [1, 14]
+     * @return string
+     */
+    public static String get(byte value) {
+        switch (value) {
+            case two: {
+                return "Двойка";
+            }
+            case three: {
+                return "Тройка";
+            }
+            case four: {
+                return "Четверка";
+            }
+            case five: {
+                return "Пятерка";
+            }
+            case six: {
+                return "Шестерка";
+            }
+            case seven: {
+                return "Семерка";
+            }
+            case eight: {
+                return "Восьмерка";
+            }
+            case nine: {
+                return "Девятка";
+            }
+            case ten: {
+                return "Десятка";
+            }
+            case Jack: {
+                return "Валет";
+            }
+            case Queen: {
+                return "Дама";
+            }
+            case King: {
+                return "Король";
+            }
+            default: {
+                return "Туз";
+            }
+        }
+    }
+
 
     @Override
     public String toString() {
-        return Utils.get(value) + " " + type + " (" + getCount() + ")";
+        return get(value) + " " + type + " (" + getCount() + ")";
     }
 }
