@@ -81,6 +81,10 @@ class TestBJ {
     void testWait() {
         try {
             Utils.wait(1);
+            Utils.wait(2);
+            Utils.wait(3);
+            Utils.wait(4);
+            Utils.wait(5);
         } catch (Exception e) {
             Assertions.fail();
         }
@@ -98,6 +102,19 @@ class TestBJ {
             round.move("2", round.dealerCards);
             round.moveDealer();
             round.movePlayer();
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+        Round round2 = new Round(1, new Decks(1));
+        try {
+            Assertions.assertEquals(round2.decks.size, 52 - 3);
+            Assertions.assertEquals(round2.playerCards.cards.size(), 2);
+            Assertions.assertEquals(round2.dealerCards.cards.size(), 1);
+            round2.printCards();
+            round2.move("1", round2.playerCards);
+            round2.move("2", round2.dealerCards);
+            round2.moveDealer();
+            round2.movePlayer();
         } catch (Exception e) {
             Assertions.fail();
         }
