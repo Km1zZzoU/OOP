@@ -55,7 +55,7 @@ public class Round {
     /**
      * function where is played every round.
      *
-     * @return win player (true - player win, false - dealer win)
+     * @return result (1 - player win, -1 - dealer win, 0 - draw)
      */
     public int start() {
         System.out.print("Дилер раздал карты\n");

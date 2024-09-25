@@ -5,7 +5,7 @@ package org.nsu;
  */
 public class Card {
     String type;
-    byte value;
+    public Byte value;
     static final byte AceOne = 1;
     static final byte two = 2;
     static final byte three = 3;
@@ -20,6 +20,7 @@ public class Card {
     static final byte Queen = 12;
     static final byte King = 13;
     static final byte Ace = 14;
+    static final byte picture = 10;
 
 
     /**
@@ -39,20 +40,19 @@ public class Card {
      *
      * @return count of card.
      */
-    byte getCount() {
+    public byte getCount() {
         if (value == Ace) {
             return 11;
         }
-        return value > ten ? ten : value;
+        return value > picture ? picture : value;
     }
 
     /**
      * returns the correct string name on russian by value card.
      *
-     * @param value [1, 14]
      * @return string
      */
-    public static String get(byte value) {
+    public String getName() {
         switch (value) {
             case two: {
                 return "Двойка";
@@ -99,6 +99,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return get(value) + " " + type + " (" + getCount() + ")";
+        return new Card(type, value).getName() + " " + type + " (" + getCount() + ")";
     }
 }

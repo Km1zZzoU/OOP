@@ -3,16 +3,23 @@ package org.nsu;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-class TestBJ {
+class TestCard {
 
     void assertEq(String name, Card card) {
         Assertions.assertEquals(name, card.toString());
     }
 
     @org.junit.jupiter.api.Test
-    void testnames() {
+    void testValue() {
+        Assertions.assertEquals(new Card("", (byte) 2).getName(), "Двойка");
+        Assertions.assertEquals(new Card("", (byte) 7).getName(), "Семерка");
+        Assertions.assertEquals(new Card("", (byte) 11).getName(), "Валет");
+        Assertions.assertEquals(new Card("", (byte) 14).getName(), "Туз");
+    }
+
+    @org.junit.jupiter.api.Test
+    void testNames() {
         assertEq("Двойка Бубей (2)", new Card("Бубей", (byte) 2));
         assertEq("Двойка Черви (2)", new Card("Черви", (byte) 2));
         assertEq("Двойка Пик (2)", new Card("Пик", (byte) 2));
@@ -26,6 +33,9 @@ class TestBJ {
         assertEq("Пятерка Пик (5)", new Card("Пик", (byte) 5));
         assertEq("Пятерка Крести (5)", new Card("Крести", (byte) 5));
     }
+}
+
+class TestHandCards {
 
     @org.junit.jupiter.api.Test
     void testSuma() {
@@ -46,6 +56,20 @@ class TestBJ {
     }
 
     @org.junit.jupiter.api.Test
+    void testCard2String() {
+        HandCards cards = new HandCards();
+        cards.append(new Card("Бубей", (byte) 2));
+        cards.append(new Card("Пик", (byte) 13));
+        cards.append(new Card("Пик", (byte) 14));
+        Assertions.assertEquals(cards.cards2String(), "[Двойка Бубей (2), Король Пик (10), Туз Пик (1)] ==> (13)");
+        Assertions.assertEquals(13, cards.sum);
+        Assertions.assertEquals(23, cards.realSum);
+    }
+}
+
+class TestDeck {
+
+    @org.junit.jupiter.api.Test
     void testDeck() {
         Decks decks = new Decks(1);
         Assertions.assertEquals((int) decks.size, 52);
@@ -57,38 +81,9 @@ class TestBJ {
         }
         Assertions.assertNull(card);
     }
+}
 
-    @org.junit.jupiter.api.Test
-    void testCard2String() {
-        HandCards cards = new HandCards();
-        cards.append(new Card("Бубей", (byte) 2));
-        cards.append(new Card("Пик", (byte) 13));
-        cards.append(new Card("Пик", (byte) 14));
-        Assertions.assertEquals(cards.cards2String(), "[Двойка Бубей (2), Король Пик (10), Туз Пик (1)] ==> (13)");
-        Assertions.assertEquals(13, cards.sum);
-        Assertions.assertEquals(23, cards.realSum);
-    }
-
-    @org.junit.jupiter.api.Test
-    void testUtils() {
-        Assertions.assertEquals(Card.get((byte) 2), "Двойка");
-        Assertions.assertEquals(Card.get((byte) 7), "Семерка");
-        Assertions.assertEquals(Card.get((byte) 11), "Валет");
-        Assertions.assertEquals(Card.get((byte) 14), "Туз");
-    }
-
-    @org.junit.jupiter.api.Test
-    void testWait() {
-        try {
-            Utils.wait(1);
-            Utils.wait(2);
-            Utils.wait(3);
-            Utils.wait(4);
-            Utils.wait(5);
-        } catch (Exception e) {
-            Assertions.fail();
-        }
-    }
+class TestRound {
 
     @org.junit.jupiter.api.Test
     void testRound() {
