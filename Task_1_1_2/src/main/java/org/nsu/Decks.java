@@ -46,7 +46,7 @@ public class Decks {
 
     /**
      * pop and delete a random card.
-     *
+     * if deck is empty return nil.
      * @return random card.
      */
     public Card popCard() {
