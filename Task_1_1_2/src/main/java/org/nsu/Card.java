@@ -99,6 +99,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return new Card(type, value).getName() + " " + type + " (" + getCount() + ")";
+        return getName() + " " + type + " (" + getCount() + ")";
     }
 }
