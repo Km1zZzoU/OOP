@@ -22,6 +22,7 @@ public class Decks {
 
     /**
      * Construct cards where made all cards and append to field cards.
+     *
      * @param count count of Decks
      */
     public Decks(int count) {
@@ -33,7 +34,7 @@ public class Decks {
     }
 
     /**
-     * delete a card from the deck
+     * delete a card from the deck.
      *
      * @param index of delCard
      */
@@ -47,6 +48,7 @@ public class Decks {
     /**
      * pop and delete a random card.
      * if deck is empty return nil.
+     *
      * @return random card.
      */
     public Card popCard() {
