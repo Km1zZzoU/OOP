@@ -44,7 +44,7 @@ public class Card {
         if (value == Ace) {
             return 11;
         }
-        return value > picture ? picture : value;
+        return value > ten ? picture : value;
     }
 
     /**
