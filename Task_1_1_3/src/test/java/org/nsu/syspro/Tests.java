@@ -16,7 +16,8 @@ public class Tests {
      * Функция для сравнения объектов по их строковому представлению.
      */
     private void assertEqualsWithToString(Object expected, Object actual) {
-        assertEquals(expected.toString(), actual.toString(), "Строковое представление объектов не совпадает");
+        assertEquals(expected.toString(), actual.toString(),
+            "Строковое представление объектов не совпадает");
     }
 
     @Nested
@@ -99,7 +100,8 @@ public class Tests {
         @Test
         void testMultiplicationDerivative() {
             Expression expr = new Mul(new Number(3), new Variable("x"));
-            assertEqualsWithToString(new Add(new Mul(new Number(0), new Variable("x")), new Mul(new Number(3), new Number(1))), expr.derivative("x"));
+            assertEqualsWithToString(new Add(new Mul(new Number(0), new Variable("x")),
+                new Mul(new Number(3), new Number(1))), expr.derivative("x"));
         }
     }
 
