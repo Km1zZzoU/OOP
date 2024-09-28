@@ -9,6 +9,7 @@ public class Sub extends Expression {
 
     /**
      * Создает выражение вычитания двух аргументов.
+     *
      * @param arg1 Первое выражение.
      * @param arg2 Второе выражение.
      */
@@ -19,6 +20,7 @@ public class Sub extends Expression {
 
     /**
      * Вычисляет значение выражения, подставляя значения переменных.
+     *
      * @param s Строка с переменными и их значениями.
      * @return Результат вычитания.
      */
@@ -29,6 +31,7 @@ public class Sub extends Expression {
 
     /**
      * Вычисляет производную выражения по заданной переменной.
+     *
      * @param s Имя переменной.
      * @return Производная выражения.
      */
@@ -39,6 +42,7 @@ public class Sub extends Expression {
 
     /**
      * Возвращает строковое представление вычитания.
+     *
      * @return Строка вида "(arg1 - arg2)".
      */
     @Override
@@ -48,6 +52,7 @@ public class Sub extends Expression {
 
     /**
      * Вычисляет результат вычитания без переменных.
+     *
      * @return Результат вычитания.
      */
     @Override

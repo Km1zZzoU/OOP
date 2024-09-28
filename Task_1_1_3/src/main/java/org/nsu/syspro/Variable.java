@@ -11,6 +11,7 @@ public class Variable extends Expression {
 
     /**
      * Создает переменную с заданным именем.
+     *
      * @param name Имя переменной.
      */
     public Variable(String name) {
@@ -20,6 +21,7 @@ public class Variable extends Expression {
 
     /**
      * Устанавливает значение переменной.
+     *
      * @param value Значение переменной.
      */
     public void setValue(double value) {
@@ -28,6 +30,7 @@ public class Variable extends Expression {
 
     /**
      * Вычисляет значение переменной, подставляя ее значение из строки.
+     *
      * @param s Строка с переменными и их значениями в формате "x = 10; y = 5".
      * @return Значение переменной или null, если значение не найдено.
      */
@@ -47,6 +50,7 @@ public class Variable extends Expression {
     /**
      * Возвращает производную переменной.
      * Если имя переменной совпадает с заданным, возвращает 1, иначе — 0.
+     *
      * @param s Имя переменной.
      * @return Производная переменной.
      */
@@ -60,6 +64,7 @@ public class Variable extends Expression {
 
     /**
      * Возвращает имя переменной.
+     *
      * @return Строковое представление переменной.
      */
     @Override
@@ -69,6 +74,7 @@ public class Variable extends Expression {
 
     /**
      * Возвращает значение переменной.
+     *
      * @return Значение переменной.
      * @throws IllegalStateException если значение переменной не установлено.
      */

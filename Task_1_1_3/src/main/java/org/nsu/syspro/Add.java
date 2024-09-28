@@ -9,6 +9,7 @@ public class Add extends Expression {
 
     /**
      * Создает выражение сложения двух аргументов.
+     *
      * @param arg1 Первое выражение.
      * @param arg2 Второе выражение.
      */
@@ -19,6 +20,7 @@ public class Add extends Expression {
 
     /**
      * Вычисляет значение выражения, подставляя значения переменных.
+     *
      * @param s Строка с переменными и их значениями.
      * @return Результат сложения.
      */
@@ -29,6 +31,7 @@ public class Add extends Expression {
 
     /**
      * Вычисляет производную выражения по заданной переменной.
+     *
      * @param s Имя переменной.
      * @return Производная выражения.
      */
@@ -39,6 +42,7 @@ public class Add extends Expression {
 
     /**
      * Возвращает строковое представление сложения.
+     *
      * @return Строка вида "(arg1 + arg2)".
      */
     @Override
@@ -48,6 +52,7 @@ public class Add extends Expression {
 
     /**
      * Вычисляет результат сложения без переменных.
+     *
      * @return Результат сложения.
      */
     @Override
