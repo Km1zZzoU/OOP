@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"org.nsu.syspro","l":"Add"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.nsu.syspro","l":"Div"},{"p":"org.nsu.syspro","l":"Expression"},{"p":"org.nsu.syspro","l":"Mul"},{"p":"org.nsu.syspro","l":"Number"},{"p":"org.nsu.syspro","l":"Sub"},{"p":"org.nsu.syspro","l":"Variable"}]
