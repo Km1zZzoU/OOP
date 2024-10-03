@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -192,7 +192,7 @@ extends <a href="Expression.html" title="class in org.nsu.syspro">Expression</a>
 <td class="colFirst"><code>java.lang.Double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;s)</code></th>
 <td class="colLast">
-<div class="block">Вычисляет значение переменной, подставляя ее значение из строки.</div>
+<div class="block">Возвращает значение переменной.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -203,13 +203,6 @@ extends <a href="Expression.html" title="class in org.nsu.syspro">Expression</a>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.lang.Double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#solve()">solve</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Возвращает значение переменной.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
@@ -285,24 +278,6 @@ extends <a href="Expression.html" title="class in org.nsu.syspro">Expression</a>
 </dl>
 </li>
 </ul>
-<a id="eval(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>eval</h4>
-<pre class="methodSignature">public&nbsp;java.lang.Double&nbsp;eval&#8203;(java.lang.String&nbsp;s)</pre>
-<div class="block">Вычисляет значение переменной, подставляя ее значение из строки.</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Expression.html#eval(java.lang.String)">eval</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in org.nsu.syspro">Expression</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>s</code> - Строка с переменными и их значениями в формате "x = 10; y = 5".</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>Значение переменной или null, если значение не найдено.</dd>
-</dl>
-</li>
-</ul>
 <a id="derivative(java.lang.String)">
 <!--   -->
 </a>
@@ -338,17 +313,19 @@ extends <a href="Expression.html" title="class in org.nsu.syspro">Expression</a>
 </dl>
 </li>
 </ul>
-<a id="solve()">
+<a id="eval(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>solve</h4>
-<pre class="methodSignature">public&nbsp;java.lang.Double&nbsp;solve()</pre>
+<h4>eval</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Double&nbsp;eval&#8203;(java.lang.String&nbsp;s)</pre>
 <div class="block">Возвращает значение переменной.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Expression.html#solve()">solve</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in org.nsu.syspro">Expression</a></code></dd>
+<dd><code><a href="Expression.html#eval(java.lang.String)">eval</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in org.nsu.syspro">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>s</code> - Строка, содержащая переменные и их значения в формате "x = 10", "y = 5".</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Значение переменной.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
