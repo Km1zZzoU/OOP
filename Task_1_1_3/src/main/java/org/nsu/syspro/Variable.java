@@ -29,25 +29,6 @@ public class Variable extends Expression {
     }
 
     /**
-     * Вычисляет значение переменной, подставляя ее значение из строки.
-     *
-     * @param s Строка с переменными и их значениями в формате "x = 10; y = 5".
-     * @return Значение переменной или null, если значение не найдено.
-     */
-    @Override
-    public Double eval(String s) {
-        String[] equals = s.split("; ");
-        for (String equal : equals) {
-            String[] morfems = equal.split(" = ");
-            if (Objects.equals(morfems[0], name)) {
-                setValue(Double.parseDouble(morfems[1]));
-                return value;
-            }
-        }
-        return null;
-    }
-
-    /**
      * Возвращает производную переменной.
      * Если имя переменной совпадает с заданным, возвращает 1, иначе — 0.
      *
@@ -79,10 +60,15 @@ public class Variable extends Expression {
      * @throws IllegalStateException если значение переменной не установлено.
      */
     @Override
-    public Double solve() {
-        if (value == null) {
-            throw new IllegalStateException("Variable '" + name + "' is not initialized.");
+    public Double eval(String s) {
+        String[] equals = s.split("; ");
+        for (String equal : equals) {
+            String[] morfems = equal.split(" = ");
+            if (Objects.equals(morfems[0], name)) {
+                setValue(Double.parseDouble(morfems[1]));
+                return value;
+            }
         }
-        return value;
+        throw new IllegalStateException("Variable '" + name + "' is not initialized.");
     }
 }

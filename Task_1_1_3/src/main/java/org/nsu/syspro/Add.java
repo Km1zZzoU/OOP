@@ -49,14 +49,4 @@ public class Add extends Expression {
     public String toString() {
         return "(" + arg1.toString() + "+" + arg2.toString() + ")";
     }
-
-    /**
-     * Вычисляет результат сложения без переменных.
-     *
-     * @return Результат сложения.
-     */
-    @Override
-    public Double solve() {
-        return arg1.solve() + arg2.solve();
-    }
 }

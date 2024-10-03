@@ -25,7 +25,7 @@ public class Tests {
         @Test
         void testNumber() {
             Number num = new Number(5);
-            assertEquals(5, num.solve());
+            assertEquals(5, num.eval(""));
             assertEqualsWithToString("5", num);
         }
 
@@ -38,12 +38,6 @@ public class Tests {
 
     @Nested
     class VariableTests {
-        @Test
-        void testVariable() {
-            Variable x = new Variable("x");
-            x.setValue(10);
-            assertEquals(10, x.solve());
-        }
 
         @Test
         void testVariableDerivative() {
@@ -53,9 +47,15 @@ public class Tests {
         }
 
         @Test
-        void testUninitializedVariable() {
-            Variable y = new Variable("y");
-            assertThrows(IllegalStateException.class, y::solve);
+        void testEval() {
+            Variable var = new Variable("x");
+            assertEquals(4, var.eval("y = 3; x = 4; z = 5"));
+        }
+
+        @Test
+        void testThrowEval() {
+            Variable var = new Variable("w");
+            assertThrows(IllegalStateException.class, () -> var.eval("y = 3; x = 4; z = 5"));
         }
     }
 
@@ -64,7 +64,7 @@ public class Tests {
         @Test
         void testAddition() {
             Expression expr = new Add(new Number(3), new Number(5));
-            assertEquals(8, expr.solve());
+            assertEquals(8, expr.eval(""));
         }
 
         @Test
@@ -79,7 +79,7 @@ public class Tests {
         @Test
         void testSubtraction() {
             Expression expr = new Sub(new Number(10), new Number(4));
-            assertEquals(6, expr.solve());
+            assertEquals(6, expr.eval(""));
         }
 
         @Test
@@ -94,7 +94,7 @@ public class Tests {
         @Test
         void testMultiplication() {
             Expression expr = new Mul(new Number(7), new Number(6));
-            assertEquals(42, expr.solve());
+            assertEquals(42, expr.eval(""));
         }
 
         @Test
@@ -110,15 +110,13 @@ public class Tests {
         @Test
         void testDivision() {
             Expression expr = new Div(new Number(12), new Number(4));
-            assertEquals(3, expr.solve());
+            assertEquals(3, expr.eval(""));
         }
 
         @Test
         void testDivisionByZero() {
-            try {
-                Expression expr = new Div(new Number(5), new Number(0));
-                Assertions.assertNull(expr);
-            } catch (AssertionError e) {}
+            Expression expr = new Div(new Number(5), new Number(0));
+            assertThrows(ArithmeticException.class, () -> expr.eval("x = 5"));
         }
     }
 
@@ -130,7 +128,7 @@ public class Tests {
                 new Add(new Number(3), new Number(2)),
                 new Sub(new Number(4), new Number(1))
             );
-            assertEquals(15, expr.solve());
+            assertEquals(15, expr.eval(""));
         }
 
         @Test

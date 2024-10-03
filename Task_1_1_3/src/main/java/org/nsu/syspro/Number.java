@@ -51,14 +51,4 @@ public class Number extends Expression {
             return Double.toString(value);
         }
     }
-
-    /**
-     * Возвращает значение числа.
-     *
-     * @return Числовое значение.
-     */
-    @Override
-    public Double solve() {
-        return value;
-    }
 }

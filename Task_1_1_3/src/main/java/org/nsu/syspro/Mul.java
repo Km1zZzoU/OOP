@@ -48,14 +48,4 @@ public class Mul extends Expression {
     public String toString() {
         return "(" + arg1.toString() + "*" + arg2.toString() + ")";
     }
-
-    /**
-     * Вычисляет результат умножения без переменных.
-     *
-     * @return Результат умножения.
-     */
-    @Override
-    public Double solve() {
-        return arg1.solve() * arg2.solve();
-    }
 }

@@ -24,7 +24,10 @@ public class Div extends Expression {
      * @return Результат деления.
      */
     @Override
-    public Double eval(String s) {
+    public Double eval(String s) throws ArithmeticException {
+        if (arg2.eval(s) == 0.0) {
+            throw new ArithmeticException();
+        }
         return arg1.eval(s) / arg2.eval(s);
     }
 
@@ -48,15 +51,5 @@ public class Div extends Expression {
     @Override
     public String toString() {
         return "(" + arg1.toString() + "/" + arg2.toString() + ")";
-    }
-
-    /**
-     * Вычисляет результат деления без переменных.
-     *
-     * @return Результат деления.
-     */
-    @Override
-    public Double solve() {
-        return arg1.solve() / arg2.solve();
     }
 }

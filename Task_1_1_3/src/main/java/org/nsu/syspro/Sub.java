@@ -49,14 +49,4 @@ public class Sub extends Expression {
     public String toString() {
         return "(" + arg1.toString() + "-" + arg2.toString() + ")";
     }
-
-    /**
-     * Вычисляет результат вычитания без переменных.
-     *
-     * @return Результат вычитания.
-     */
-    @Override
-    public Double solve() {
-        return arg1.solve() - arg2.solve();
-    }
 }
