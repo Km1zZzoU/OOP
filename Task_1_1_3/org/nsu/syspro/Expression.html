@@ -197,7 +197,10 @@ extends java.lang.Object</pre>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="Expression.html" title="class in org.nsu.syspro">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#parser(java.lang.String)">parser</a></span>&#8203;(java.lang.String&nbsp;str)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Парсит строку и возвращает математическое выражение
+ в виде объекта <a href="Expression.html" title="class in org.nsu.syspro"><code>Expression</code></a>.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -263,6 +266,17 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>parser</h4>
 <pre class="methodSignature">public static&nbsp;<a href="Expression.html" title="class in org.nsu.syspro">Expression</a>&nbsp;parser&#8203;(java.lang.String&nbsp;str)</pre>
+<div class="block">Парсит строку и возвращает математическое выражение
+ в виде объекта <a href="Expression.html" title="class in org.nsu.syspro"><code>Expression</code></a>.
+ Поддерживает числа, переменные и базовые арифметические операции:
+ сложение, вычитание, умножение и деление.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>str</code> - строка, содержащая математическое выражение для парсинга.
+            Строка должна быть корректно заключена в скобки, если используются арифметические операции.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>объект <a href="Expression.html" title="class in org.nsu.syspro"><code>Expression</code></a>, представляющий соответствующее математическое выражение.</dd>
+</dl>
 </li>
 </ul>
 <a id="toString()">
