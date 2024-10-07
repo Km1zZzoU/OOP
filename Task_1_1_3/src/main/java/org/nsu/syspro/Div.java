@@ -40,7 +40,7 @@ public class Div extends Expression {
      */
     @Override
     public Expression derivative(String s) {
-        return new Div((new Mul(arg1, arg2)).derivative(s), new Mul(arg2, arg2));
+        return new Div(new Sub(new Mul(arg1.derivative(s), arg2), new Mul(arg1, arg2.derivative(s))), new Mul(arg2, arg2));
     }
 
     /**
