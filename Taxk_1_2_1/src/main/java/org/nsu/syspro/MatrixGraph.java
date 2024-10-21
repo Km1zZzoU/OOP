@@ -1,124 +1,133 @@
 package org.nsu.syspro;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
+import java.util.ArrayList;
 
 /**
- * Реализация графа через матрицу смежности.
+ * Реализация графа через матрицу смежности с вершинами типа Integer.
  */
 public class MatrixGraph implements Graph {
-    private final Map<String, Integer> vertexIndexMap = new HashMap<>();
-    private final List<String> vertices = new ArrayList<>();
+    private final Map<Integer, Integer> vertexIndexMap = new HashMap<>();
     private boolean[][] Matrix;
 
-    @Override
-    public void addVertex(String vertex) {
-        vertexIndexMap.putIfAbsent(vertex, vertices.size());
-        vertices.add(vertex);
-        resizeMatrix();
+    MatrixGraph() {
+
     }
 
+    /**
+     * Добавляет вершину в граф.
+     *
+     * @param vertex Вершина, которую нужно добавить.
+     */
     @Override
-    public void removeVertex(String vertex) {
+    public void addVertex(Integer vertex) {
+        if (!vertexIndexMap.containsKey(vertex)) {
+            vertexIndexMap.put(vertex, vertexIndexMap.size());
+            sizeUpMatrix();
+        }
+    }
+
+    /**
+     * Удаляет вершину из графа.
+     *
+     * @param vertex Вершина, которую нужно удалить.
+     */
+    @Override
+    public void removeVertex(Integer vertex) {
         Integer index = vertexIndexMap.remove(vertex);
         if (index != null) {
-            vertices.remove((int) index);
-            resizeMatrix();
-            for (String v : vertexIndexMap.keySet()) {
-                if (vertexIndexMap.get(v) > index) {
-                    vertexIndexMap.put(v, vertexIndexMap.get(v) - 1);
-                }
+            for (int i = 0; i < Matrix.length; i++) {
+                Matrix[i][index] = false;
             }
         }
     }
 
+    /**
+     * Добавляет ребро между двумя вершинами.
+     * При отсутвие вершин, добавляет их.
+     *
+     * @param source Исходная вершина.
+     * @param destination Целевая вершина.
+     */
     @Override
-    public void addEdge(String source, String destination) {
+    public void addEdge(Integer source, Integer destination) {
+        addVertex(source);
         int sourceIndex = vertexIndexMap.get(source);
+        addVertex(destination);
         int destinationIndex = vertexIndexMap.get(destination);
         Matrix[sourceIndex][destinationIndex] = true;
     }
 
+    /**
+     * Удаляет ребро между двумя вершинами.
+     *
+     * @param source Исходная вершина.
+     * @param destination Целевая вершина.
+     */
     @Override
-    public void removeEdge(String source, String destination) {
+    public void removeEdge(Integer source, Integer destination) {
         int sourceIndex = vertexIndexMap.get(source);
         int destinationIndex = vertexIndexMap.get(destination);
         Matrix[sourceIndex][destinationIndex] = false;
     }
 
+    /**
+     * Возвращает список соседей заданной вершины.
+     *
+     * @param vertex Вершина, для которой нужно получить соседей.
+     * @return Список соседей. Если передать NULL вернет всех.
+     */
     @Override
-    public List<String> getNeighbors(String vertex) {
-        List<String> neighbors = new ArrayList<>();
+    public List<Integer> getNeighbors(Integer vertex) {
+        if (vertex == null) {
+            return new ArrayList<>(vertexIndexMap.keySet());
+        }
+
+        List<Integer> neighbors = new ArrayList<>();
         int vertexIndex = vertexIndexMap.get(vertex);
         for (int i = 0; i < Matrix[vertexIndex].length; i++) {
             if (Matrix[vertexIndex][i]) {
-                neighbors.add(vertices.get(i));
+                neighbors.add(getVertexByIndex(i));
             }
         }
         return neighbors;
     }
 
-    private void resizeMatrix() {
-        int size = vertices.size();
-        boolean[][] newMatrix = new boolean[size][size];
-        if (Matrix != null) {
-            for (int i = 0; i < Matrix.length; i++) {
-                System.arraycopy(Matrix[i], 0, newMatrix[i], 0, Math.min(Matrix[i].length, size));
+    /**
+     * Получает вершину по её индексу.
+     *
+     * @param index Индекс вершины.
+     * @return Вершина, соответствующая данному индексу.
+     */
+    private Integer getVertexByIndex(int index) {
+        for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
+            if (entry.getValue() == index) {
+                return entry.getKey();
             }
         }
+        return null;
+    }
+
+    /**
+     * Изменяет размер матрицы смежности в зависимости от количества вершин.
+     */
+    public void sizeUpMatrix() {
+        int size = vertexIndexMap.size();
+        boolean[][] newMatrix = new boolean[size][size];
+
+        // Копирование данных из старой матрицы в новую
+        if (Matrix != null) {
+            for (int i = 0; i < Matrix.length; i++) {
+                for (int j = 0; j < Matrix[i].length; j++) {
+                    newMatrix[i][j] = Matrix[i][j];
+                }
+            }
+        }
+
         Matrix = newMatrix;
     }
 
-    @Override
-    public void readFromFile(String filename) {
-        // Реализация чтения из файла
-    }
 
-    @Override
-    public List<String> topologicalSort() {
-        List<String> result = new ArrayList<>();
-        Set<String> visited = new HashSet<>();
-        Stack<String> stack = new Stack<>();
-
-        for (String vertex : vertices) {
-            if (!visited.contains(vertex)) {
-                topologicalSortUtil(vertex, visited, stack);
-            }
-        }
-
-        while (!stack.isEmpty()) {
-            result.add(stack.pop());
-        }
-
-        return result;
-    }
-
-    private void topologicalSortUtil(String vertex, Set<String> visited, Stack<String> stack) {
-        visited.add(vertex);
-        for (String neighbor : getNeighbors(vertex)) {
-            if (!visited.contains(neighbor)) {
-                topologicalSortUtil(neighbor, visited, stack);
-            }
-        }
-        stack.push(vertex);
-    }
-
-    @Override
-    public String toString() {
-        return Arrays.deepToString(Matrix);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof MatrixGraph)) return false;
-        MatrixGraph other = (MatrixGraph) obj;
-        return Arrays.deepEquals(Matrix, other.Matrix);
-    }
 }

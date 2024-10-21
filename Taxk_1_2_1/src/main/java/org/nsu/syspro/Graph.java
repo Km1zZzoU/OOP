@@ -11,14 +11,14 @@ public interface Graph {
      *
      * @param vertex Вершина, которую нужно добавить.
      */
-    void addVertex(String vertex);
+    void addVertex(Integer vertex);
 
     /**
      * Удаляет вершину из графа.
      *
      * @param vertex Вершина, которую нужно удалить.
      */
-    void removeVertex(String vertex);
+    void removeVertex(Integer vertex);
 
     /**
      * Добавляет ребро между двумя вершинами.
@@ -26,7 +26,7 @@ public interface Graph {
      * @param source Исходная вершина.
      * @param destination Конечная вершина.
      */
-    void addEdge(String source, String destination);
+    void addEdge(Integer source, Integer destination);
 
     /**
      * Удаляет ребро между двумя вершинами.
@@ -34,7 +34,7 @@ public interface Graph {
      * @param source Исходная вершина.
      * @param destination Конечная вершина.
      */
-    void removeEdge(String source, String destination);
+    void removeEdge(Integer source, Integer destination);
 
     /**
      * Получает список соседей для заданной вершины.
@@ -42,19 +42,5 @@ public interface Graph {
      * @param vertex Вершина, для которой нужно получить соседей.
      * @return Список соседей.
      */
-    List<String> getNeighbors(String vertex);
-
-    /**
-     * Читает граф из файла.
-     *
-     * @param filename Имя файла.
-     */
-    void readFromFile(String filename);
-
-    /**
-     * Выполняет топологическую сортировку графа.
-     *
-     * @return Список вершин в топологическом порядке.
-     */
-    List<String> topologicalSort();
+    List<Integer> getNeighbors(Integer vertex);
 }

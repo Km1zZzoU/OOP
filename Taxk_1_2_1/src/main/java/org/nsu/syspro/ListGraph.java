@@ -1,87 +1,79 @@
 package org.nsu.syspro;
+
 import java.util.*;
 
 /**
- * Реализация графа через список смежности.
+ * Реализация графа через список смежности с вершинами типа Integer.
  */
 public class ListGraph implements Graph {
-    private final Map<String, List<String>> List = new HashMap<>();
+    private final Map<Integer, List<Integer>> adjacencyList = new HashMap<>();
 
-    @Override
-    public void addVertex(String vertex) {
-        List.putIfAbsent(vertex, new ArrayList<>());
+    ListGraph() {
+
     }
 
+    /**
+     * Добавляет вершину в граф.
+     *
+     * @param vertex Вершина, которую нужно добавить.
+     */
     @Override
-    public void removeVertex(String vertex) {
-        List.remove(vertex);
-        List.values().forEach(e -> e.remove(vertex));
+    public void addVertex(Integer vertex) {
+        adjacencyList.putIfAbsent(vertex, new ArrayList<>());
     }
 
+    /**
+     * Удаляет вершину из графа.
+     *
+     * @param vertex Вершина, которую нужно удалить.
+     */
     @Override
-    public void addEdge(String source, String destination) {
-        List.putIfAbsent(source, new ArrayList<>());
-        List.putIfAbsent(destination, new ArrayList<>());
-        List.get(source).add(destination);
+    public void removeVertex(Integer vertex) {
+        adjacencyList.remove(vertex);
+        adjacencyList.values().forEach(e -> e.remove(vertex)); // Удаляем вершину из списков смежности других вершин
     }
 
+    /**
+     * Добавляет ребро между двумя вершинами.
+     * При отсутвие вершин, добавляет их.
+     *
+     * @param source Исходная вершина.
+     * @param destination Целевая вершина.
+     */
     @Override
-    public void removeEdge(String source, String destination) {
-        List<String> neighbors = List.get(source);
+    public void addEdge(Integer source, Integer destination) {
+        adjacencyList.putIfAbsent(source, new ArrayList<>());
+        adjacencyList.putIfAbsent(destination, new ArrayList<>());
+        if (!adjacencyList.get(source).contains(destination)) { // Проверяем на дубликаты
+            adjacencyList.get(source).add(destination);
+        }
+    }
+
+    /**
+     * Удаляет ребро между двумя вершинами.
+     *
+     * @param source Исходная вершина.
+     * @param destination Целевая вершина.
+     */
+    @Override
+    public void removeEdge(Integer source, Integer destination) {
+        List<Integer> neighbors = adjacencyList.get(source);
         if (neighbors != null) {
-            neighbors.remove(destination);
+            neighbors.remove(destination); // Удаляем связь (ребро) между вершинами
         }
     }
 
+    /**
+     * Возвращает список соседей заданной вершины.
+     *
+     * @param vertex Вершина, для которой нужно получить соседей.
+     * @return Список соседей. Если передать NULL вернет всех.
+     */
     @Override
-    public List<String> getNeighbors(String vertex) {
-        return List.getOrDefault(vertex, new ArrayList<>());
-    }
-
-    @Override
-    public void readFromFile(String filename) {
-        // Реализация чтения из файла
-    }
-
-    @Override
-    public List<String> topologicalSort() {
-        List<String> result = new ArrayList<>();
-        Set<String> visited = new HashSet<>();
-        Stack<String> stack = new Stack<>();
-
-        for (String vertex : List.keySet()) {
-            if (!visited.contains(vertex)) {
-                topologicalSortUtil(vertex, visited, stack);
-            }
+    public List<Integer> getNeighbors(Integer vertex) {
+        if (vertex == null) {
+            return new ArrayList<>(adjacencyList.keySet()); // Возвращаем все вершины, если vertex равно null
         }
-
-        while (!stack.isEmpty()) {
-            result.add(stack.pop());
-        }
-
-        return result;
-    }
-
-    private void topologicalSortUtil(String vertex, Set<String> visited, Stack<String> stack) {
-        visited.add(vertex);
-        for (String neighbor : getNeighbors(vertex)) {
-            if (!visited.contains(neighbor)) {
-                topologicalSortUtil(neighbor, visited, stack);
-            }
-        }
-        stack.push(vertex);
-    }
-
-    @Override
-    public String toString() {
-        return List.toString();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof ListGraph)) return false;
-        ListGraph other = (ListGraph) obj;
-        return List.equals(other.List);
+        return adjacencyList.getOrDefault(vertex, new ArrayList<>()); // Возвращаем список смежных вершин
     }
 }
