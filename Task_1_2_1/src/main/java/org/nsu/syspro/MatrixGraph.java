@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class MatrixGraph implements Graph {
     private final Map<Integer, Integer> vertexIndexMap = new HashMap<>();
-    private boolean[][] Matrix;
+    private boolean[][] matrix;
 
     MatrixGraph() {
 
@@ -38,8 +38,8 @@ public class MatrixGraph implements Graph {
     public void removeVertex(Integer vertex) {
         Integer index = vertexIndexMap.remove(vertex);
         if (index != null) {
-            for (int i = 0; i < Matrix.length; i++) {
-                Matrix[i][index] = false;
+            for (int i = 0; i < matrix.length; i++) {
+                matrix[i][index] = false;
             }
         }
     }
@@ -57,7 +57,7 @@ public class MatrixGraph implements Graph {
         int sourceIndex = vertexIndexMap.get(source);
         addVertex(destination);
         int destinationIndex = vertexIndexMap.get(destination);
-        Matrix[sourceIndex][destinationIndex] = true;
+        matrix[sourceIndex][destinationIndex] = true;
     }
 
     /**
@@ -70,7 +70,7 @@ public class MatrixGraph implements Graph {
     public void removeEdge(Integer source, Integer destination) {
         int sourceIndex = vertexIndexMap.get(source);
         int destinationIndex = vertexIndexMap.get(destination);
-        Matrix[sourceIndex][destinationIndex] = false;
+        matrix[sourceIndex][destinationIndex] = false;
     }
 
     /**
@@ -87,8 +87,8 @@ public class MatrixGraph implements Graph {
 
         List<Integer> neighbors = new ArrayList<>();
         int vertexIndex = vertexIndexMap.get(vertex);
-        for (int i = 0; i < Matrix[vertexIndex].length; i++) {
-            if (Matrix[vertexIndex][i]) {
+        for (int i = 0; i < matrix[vertexIndex].length; i++) {
+            if (matrix[vertexIndex][i]) {
                 neighbors.add(getVertexByIndex(i));
             }
         }
@@ -118,15 +118,15 @@ public class MatrixGraph implements Graph {
         boolean[][] newMatrix = new boolean[size][size];
 
         // Копирование данных из старой матрицы в новую
-        if (Matrix != null) {
-            for (int i = 0; i < Matrix.length; i++) {
-                for (int j = 0; j < Matrix[i].length; j++) {
-                    newMatrix[i][j] = Matrix[i][j];
+        if (matrix != null) {
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    newMatrix[i][j] = matrix[i][j];
                 }
             }
         }
 
-        Matrix = newMatrix;
+        matrix = newMatrix;
     }
 
 

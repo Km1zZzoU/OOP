@@ -30,7 +30,8 @@ public class ListGraph implements Graph {
     @Override
     public void removeVertex(Integer vertex) {
         adjacencyList.remove(vertex);
-        adjacencyList.values().forEach(e -> e.remove(vertex)); // Удаляем вершину из списков смежности других вершин
+        adjacencyList.values().forEach(e -> e.remove(vertex));
+        // Удаляем вершину из списков смежности других вершин
     }
 
     /**
@@ -72,8 +73,8 @@ public class ListGraph implements Graph {
     @Override
     public List<Integer> getNeighbors(Integer vertex) {
         if (vertex == null) {
-            return new ArrayList<>(adjacencyList.keySet()); // Возвращаем все вершины, если vertex равно null
+            return new ArrayList<>(adjacencyList.keySet());
         }
-        return adjacencyList.getOrDefault(vertex, new ArrayList<>()); // Возвращаем список смежных вершин
+        return adjacencyList.getOrDefault(vertex, new ArrayList<>());
     }
 }

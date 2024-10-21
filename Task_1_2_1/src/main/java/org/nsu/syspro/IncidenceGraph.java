@@ -44,7 +44,7 @@ public class IncidenceGraph implements Graph {
      */
     @Override
     public void removeVertex(Integer vertex) {
-        Integer vertexIndex = vertexIndexMap.remove(vertex); // Удаляем вершину из мапы и получаем ее индекс
+        Integer vertexIndex = vertexIndexMap.remove(vertex);
         if (vertexIndex != null) {
             vertexCount--;
 
@@ -64,12 +64,10 @@ public class IncidenceGraph implements Graph {
 
             incidenceMatrix = newMatrix;
 
-            // Обновляем vertexIndexMap
             Map<Integer, Integer> newVertexIndexMap = new HashMap<>();
-            int newIndex = 0;
             for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
                 if (entry.getValue() > vertexIndex) {
-                    newVertexIndexMap.put(entry.getKey(), entry.getValue() - 1); // Уменьшаем индекс для вершин, которые идут после удаляемой
+                    newVertexIndexMap.put(entry.getKey(), entry.getValue() - 1);
                 } else {
                     newVertexIndexMap.put(entry.getKey(), entry.getValue());
                 }

@@ -39,7 +39,8 @@ public class Utils {
     /**
      * Рекурсивная функция для выполнения DFS при топологической сортировке.
      */
-    private static boolean dfsTopologicalSort(Graph graph, Integer vertex, Set<Integer> visited, Set<Integer> tempMarked, List<Integer> sorted) {
+    private static boolean dfsTopologicalSort(Graph graph, Integer vertex,
+        Set<Integer> visited, Set<Integer> tempMarked, List<Integer> sorted) {
         if (tempMarked.contains(vertex)) {
             return false; // Найден цикл
         }
@@ -76,7 +77,8 @@ public class Utils {
             List<Integer> neighbors = graph.getNeighbors(vertex);
             Collections.sort(neighbors);
 
-            result += neighbors.toString().replace("[", "").replace("]", "").replace(", ", ";") + "\n";
+            result += neighbors.toString()
+                .replace("[", "").replace("]", "").replace(", ", ";") + "\n";
         }
 
         return result;
