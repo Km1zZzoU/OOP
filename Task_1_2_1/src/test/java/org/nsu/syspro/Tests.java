@@ -30,7 +30,8 @@ public class Tests {
         void testListGraphFromFile() throws IOException {
             ListGraph graph = new ListGraph();
             Utils.fromFile(TEST_FILE_PATH, graph);
-            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -38,7 +39,8 @@ public class Tests {
             ListGraph graph = new ListGraph();
             Utils.fromFile(TEST_FILE_PATH, graph);
             graph.addVertex(6);
-            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n6->\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n6->\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -47,7 +49,8 @@ public class Tests {
             Utils.fromFile(TEST_FILE_PATH, graph);
             graph.removeVertex(1);
             graph.removeVertex(6);
-            assertEqualsWithToString("0->0;2\n2->3;5\n3->0;3;5\n5->2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;2\n2->3;5\n3->0;3;5\n5->2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -58,7 +61,8 @@ public class Tests {
             graph.addEdge(2, 0);
             graph.addEdge(7, 8);
             graph.addEdge(8, 2);
-            assertEqualsWithToString("0->0;1;2\n1->2;3\n2->0;3;5\n3->0;3;5\n5->1;2\n7->8\n8->2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2;3\n2->0;3;5\n3->0;3;5\n5->1;2\n7->8\n8->2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -67,7 +71,8 @@ public class Tests {
             Utils.fromFile(TEST_FILE_PATH, graph);
             graph.removeEdge(2, 5);
             graph.removeEdge(3, 3);
-            assertEqualsWithToString("0->0;1;2\n1->2\n2->3\n3->0;5\n5->1;2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2\n2->3\n3->0;5\n5->1;2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -83,9 +88,11 @@ public class Tests {
             graph.addEdge(5, 7);
             graph.addEdge(7, 1);
             graph.addEdge(2, 5);
-            assertEqualsWithToString("[2, 5, 7, 1, 6, 3, 4]", Utils.topologicalSort(graph));
+            assertEqualsWithToString("[2, 5, 7, 1, 6, 3, 4]",
+                Utils.topologicalSort(graph));
             graph.addEdge(4, 2);
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Utils.topologicalSort(graph));
+            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> Utils.topologicalSort(graph));
             assertEquals("Граф содержит цикл", exception.getMessage());
         }
     }
@@ -97,7 +104,8 @@ public class Tests {
         void testIncidenceGraphFromFile() throws IOException {
             IncidenceGraph graph = new IncidenceGraph();
             Utils.fromFile(TEST_FILE_PATH, graph);
-            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -105,7 +113,8 @@ public class Tests {
             IncidenceGraph graph = new IncidenceGraph();
             Utils.fromFile(TEST_FILE_PATH, graph);
             graph.addVertex(6);
-            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n6->\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2\n2->3;5\n3->0;3;5\n5->1;2\n6->\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -114,7 +123,8 @@ public class Tests {
             Utils.fromFile(TEST_FILE_PATH, graph);
             graph.removeVertex(1);
             graph.removeVertex(6);
-            assertEqualsWithToString("0->0;2\n2->3;5\n3->0;3;5\n5->2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;2\n2->3;5\n3->0;3;5\n5->2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -125,7 +135,8 @@ public class Tests {
             graph.addEdge(2, 0);
             graph.addEdge(7, 8);
             graph.addEdge(8, 2);
-            assertEqualsWithToString("0->0;1;2\n1->2;3\n2->0;3;5\n3->0;3;5\n5->1;2\n7->8\n8->2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2;3\n2->0;3;5\n3->0;3;5\n5->1;2\n7->8\n8->2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -134,7 +145,8 @@ public class Tests {
             Utils.fromFile(TEST_FILE_PATH, graph);
             graph.removeEdge(2, 5);
             graph.removeEdge(3, 3);
-            assertEqualsWithToString("0->0;1;2\n1->2\n2->3\n3->0;5\n5->1;2\n", Utils.graphToString(graph));
+            assertEqualsWithToString("0->0;1;2\n1->2\n2->3\n3->0;5\n5->1;2\n",
+                Utils.graphToString(graph));
         }
 
         @Test
@@ -150,9 +162,12 @@ public class Tests {
             graph.addEdge(5, 7);
             graph.addEdge(7, 1);
             graph.addEdge(2, 5);
-            assertEqualsWithToString("[2, 5, 7, 1, 6, 3, 4]", Utils.topologicalSort(graph));
+            assertEqualsWithToString("[2, 5, 7, 1, 6, 3, 4]",
+                Utils.topologicalSort(graph));
             graph.addEdge(4, 2);
-            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Utils.topologicalSort(graph));
+            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, (
+
+            ) -> Utils.topologicalSort(graph));
             assertEquals("Граф содержит цикл", exception.getMessage());
         }
     }

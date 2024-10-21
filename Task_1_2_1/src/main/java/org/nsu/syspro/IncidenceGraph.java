@@ -121,8 +121,8 @@ public class IncidenceGraph implements Graph {
 
         // Проходим по столбцам, чтобы найти ребро, соединяющее source и destination
         for (int j = 0; j < edgeCount; j++) {
-            if (incidenceMatrix[sourceIndex][j] == -1 && incidenceMatrix[destinationIndex][j] == 1 ||
-            incidenceMatrix[sourceIndex][j] == 2) {
+            if (incidenceMatrix[sourceIndex][j] == -1 && incidenceMatrix[destinationIndex][j] == 1
+                || incidenceMatrix[sourceIndex][j] == 2) {
                 // Удаляем инцидентность
                 for (int i = 0; i < vertexCount; i++) {
                     incidenceMatrix[i][j] = '\0'; // Обозначаем отсутствие инцидентности
