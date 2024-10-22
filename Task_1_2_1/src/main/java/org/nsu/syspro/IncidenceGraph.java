@@ -1,5 +1,6 @@
 package org.nsu.syspro;
 
+import com.sun.jdi.IntegerValue;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,8 @@ public class IncidenceGraph implements Graph {
     private int[][] incidenceMatrix; // Матрица инцидентности
     private int vertexCount;           // Количество вершин
     private int edgeCount;             // Количество рёбер
+    private int capEdge;
+    private int capVertex;
 
     /**
      * Конструктор для инициализации графа с нулевым количеством вершин и рёбер.
@@ -20,7 +23,9 @@ public class IncidenceGraph implements Graph {
     public IncidenceGraph() {
         vertexCount = 0;
         edgeCount = 0;
-        incidenceMatrix = new int[0][0];
+        capEdge = 4;
+        capVertex = 4;
+        incidenceMatrix = new int[capEdge][capVertex];
     }
 
     /**
@@ -38,7 +43,7 @@ public class IncidenceGraph implements Graph {
     }
 
     /**
-     * Удаляет вершину из графа.
+     * Удаляет вершину из графа. Если ее нет, не делает ничего.
      *
      * @param vertex Вершина, которую нужно удалить.
      */
@@ -46,33 +51,19 @@ public class IncidenceGraph implements Graph {
     public void removeVertex(Integer vertex) {
         Integer vertexIndex = vertexIndexMap.remove(vertex);
         if (vertexIndex != null) {
-            vertexCount--;
 
-            // Создаем новую матрицу инцидентности с уменьшенным количеством вершин
-            int[][] newMatrix = new int[vertexCount][edgeCount];
-            int newRowIndex = 0;
-
-            // Копируем данные в новую матрицу, пропуская удаляемую вершину
-            for (int i = 0; i < incidenceMatrix.length; i++) {
-                if (i != vertexIndex) {
-                    for (int j = 0; j < edgeCount; j++) {
-                        newMatrix[newRowIndex][j] = incidenceMatrix[i][j];
+            // Обнуляем строку в матрице инцидентности, связанную с удаляемой вершиной
+            for (int j = 0; j < edgeCount; j++) {
+                if (incidenceMatrix[vertexIndex][j] != 0){
+                    if (incidenceMatrix[vertexIndex][j] != 2) {
+                        for (int k = 0; k < vertexCount; k++) {
+                            incidenceMatrix[k][j] = 0;
+                        }
                     }
-                    newRowIndex++;
+                    incidenceMatrix[vertexIndex][j] = 0;
                 }
             }
-
-            incidenceMatrix = newMatrix;
-
-            Map<Integer, Integer> newVertexIndexMap = new HashMap<>();
-            for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
-                if (entry.getValue() > vertexIndex) {
-                    newVertexIndexMap.put(entry.getKey(), entry.getValue() - 1);
-                } else {
-                    newVertexIndexMap.put(entry.getKey(), entry.getValue());
-                }
-            }
-            vertexIndexMap = newVertexIndexMap;
+            vertexCount--;
         }
     }
 
@@ -105,13 +96,16 @@ public class IncidenceGraph implements Graph {
     }
 
     /**
-     * Удаляет ребро между двумя вершинами.
+     * Удаляет ребро между двумя вершинами. При отсутствии не делает ничего.
      *
      * @param source Исходная вершина.
      * @param destination Целевая вершина.
      */
     @Override
     public void removeEdge(Integer source, Integer destination) {
+        if (!vertexIndexMap.containsKey(source) || !vertexIndexMap.containsKey(destination)) {
+            return;
+        }
         int sourceIndex = vertexIndexMap.get(source);
         int destinationIndex = vertexIndexMap.get(destination);
 
@@ -142,8 +136,8 @@ public class IncidenceGraph implements Graph {
 
         if (vertex == null) {
             // Возвращаем все вершины, если vertex равно null
-            for (int i = 0; i < vertexCount; i++) {
-                neighbors.add(getVertexByIndex(i)); // Добавляем все вершины
+            for (Integer value : vertexIndexMap.values()) {
+                neighbors.add(getVertexByIndex(value)); // Добавляем все вершины
             }
             return neighbors;
         }
@@ -152,7 +146,7 @@ public class IncidenceGraph implements Graph {
         for (int j = 0; j < edgeCount; j++) {
             if (incidenceMatrix[vertexIndex][j] == -1) {
                 // Если вершина инцидентна ребру, добавляем целевую вершину
-                for (int i = 0; i < vertexCount; i++) {
+                for (int i = 0; i < capVertex; i++) {
                     if (incidenceMatrix[i][j] == 1) {
                         neighbors.add(getVertexByIndex(i));
                     }
@@ -169,7 +163,12 @@ public class IncidenceGraph implements Graph {
      * Изменяет размер матрицы инцидентности в зависимости от количества вершин и рёбер.
      */
     private void resizeMatrix() {
-        int[][] newMatrix = new int[vertexCount][edgeCount];
+        if (edgeCount < capEdge && vertexCount < capVertex) {
+            return;
+        }
+        capEdge = edgeCount >= capEdge ? capEdge << 1: capEdge;
+        capVertex = vertexCount >= capVertex ? capVertex << 1 : capVertex;
+        int[][] newMatrix = new int[capVertex][capEdge];
         for (int i = 0; i < Math.min(incidenceMatrix.length, vertexCount); i++) {
             for (int j = 0; j < Math.min(incidenceMatrix[i].length, edgeCount); j++) {
                 newMatrix[i][j] = incidenceMatrix[i][j];

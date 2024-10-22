@@ -10,10 +10,12 @@ import java.util.ArrayList;
  */
 public class MatrixGraph implements Graph {
     private final Map<Integer, Integer> vertexIndexMap = new HashMap<>();
+    private int cap;
     private boolean[][] matrix;
 
     MatrixGraph() {
-
+        this.cap = 4;
+        this.matrix = new boolean[this.cap][this.cap];
     }
 
     /**
@@ -24,13 +26,15 @@ public class MatrixGraph implements Graph {
     @Override
     public void addVertex(Integer vertex) {
         if (!vertexIndexMap.containsKey(vertex)) {
+            if (vertexIndexMap.size() == cap) {
+                sizeUpMatrix();
+            }
             vertexIndexMap.put(vertex, vertexIndexMap.size());
-            sizeUpMatrix();
         }
     }
 
     /**
-     * Удаляет вершину из графа.
+     * Удаляет вершину из графа. Если ее нет, не делает ничего. ВАУ.
      *
      * @param vertex Вершина, которую нужно удалить.
      */
@@ -60,14 +64,17 @@ public class MatrixGraph implements Graph {
         matrix[sourceIndex][destinationIndex] = true;
     }
 
-    /**
-     * Удаляет ребро между двумя вершинами.
+    /*
+     * Удаляет ребро между двумя вершинами. При отсутствии не делает ничего.
      *
      * @param source Исходная вершина.
      * @param destination Целевая вершина.
      */
     @Override
     public void removeEdge(Integer source, Integer destination) {
+        if (!vertexIndexMap.containsKey(source) || !vertexIndexMap.containsKey(destination)) {
+            return;
+        }
         int sourceIndex = vertexIndexMap.get(source);
         int destinationIndex = vertexIndexMap.get(destination);
         matrix[sourceIndex][destinationIndex] = false;
@@ -113,21 +120,14 @@ public class MatrixGraph implements Graph {
     /**
      * Изменяет размер матрицы смежности в зависимости от количества вершин.
      */
-    public void sizeUpMatrix() {
-        int size = vertexIndexMap.size();
-        boolean[][] newMatrix = new boolean[size][size];
+    private void sizeUpMatrix() {
+        cap = cap << 1;
+        boolean[][] newMatrix = new boolean[cap][cap];
 
-        // Копирование данных из старой матрицы в новую
-        if (matrix != null) {
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    newMatrix[i][j] = matrix[i][j];
-                }
-            }
+        for (int i = 0; i < matrix.length; i++) {
+            System.arraycopy(matrix[i], 0, newMatrix[i], 0, matrix[i].length);
         }
 
         matrix = newMatrix;
     }
-
-
 }
