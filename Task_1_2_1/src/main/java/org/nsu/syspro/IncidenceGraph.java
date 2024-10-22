@@ -183,7 +183,7 @@ public class IncidenceGraph implements Graph {
      * @param index Индекс вершины.
      * @return Вершина.
      */
-    private Integer getVertexByIndex(int index) {
+    public Integer getVertexByIndex(int index) {
         for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
             if (entry.getValue() == index) {
                 return entry.getKey();

@@ -108,7 +108,7 @@ public class MatrixGraph implements Graph {
      * @param index Индекс вершины.
      * @return Вершина, соответствующая данному индексу.
      */
-    private Integer getVertexByIndex(int index) {
+    public Integer getVertexByIndex(int index) {
         for (Map.Entry<Integer, Integer> entry : vertexIndexMap.entrySet()) {
             if (entry.getValue() == index) {
                 return entry.getKey();

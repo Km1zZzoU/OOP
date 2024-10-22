@@ -196,9 +196,25 @@ public interface Graph {
      * @param gr1 граф1.
      * @param gr2 граф2.
      * @return равны или не равны (bool).
-     * @param <G> Тип графа.
      */
-    static <G extends Graph> boolean equals(G gr1, G gr2) {
-        return graphToString(gr1).equals(graphToString(gr2));
+    static boolean equals(Graph gr1, Graph gr2) {
+        List<Integer> vrs1 = getAllVertices(gr1);
+        List<Integer> vrs2 = getAllVertices(gr2);
+        Collections.sort(vrs1);
+        Collections.sort(vrs2);
+        if (!vrs1.equals(vrs2)) {
+            return false;
+        }
+        for (int i = 0; i < vrs1.size(); i++) {
+            List<Integer> nrs1 = gr1.getNeighbors(vrs1.get(i));
+            List<Integer> nrs2 = gr1.getNeighbors(vrs2.get(i));
+
+            Collections.sort(nrs1);
+            Collections.sort(nrs2);
+            if (!nrs1.equals(nrs2)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
