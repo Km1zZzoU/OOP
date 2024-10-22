@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var data = {"i0":6,"i1":6,"i2":1,"i3":1,"i4":1,"i5":6,"i6":1,"i7":6,"i8":6,"i9":1};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -142,7 +142,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -164,13 +164,45 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>static &lt;G extends <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&gt;<br>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(G,G)">equals</a></span>&#8203;(G&nbsp;gr1,
+      G&nbsp;gr2)</code></th>
+<td class="colLast">
+<div class="block">Сравнивает на равенство два графа.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>static &lt;G extends <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&gt;<br>G</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#fromFile(java.lang.String,G)">fromFile</a></span>&#8203;(java.lang.String&nbsp;filePath,
+        G&nbsp;graph)</code></th>
+<td class="colLast">
+<div class="block">Восстанавливает граф из файла.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static &lt;G extends <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&gt;<br>G</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#fromString(java.lang.String,G)">fromString</a></span>&#8203;(java.lang.String&nbsp;graphString,
+          G&nbsp;graph)</code></th>
+<td class="colLast">
+<div class="block">Восстанавливает граф из строкового представления.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNeighbors(java.lang.Integer)">getNeighbors</a></span>&#8203;(java.lang.Integer&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Получает список соседей для заданной вершины.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#graphToString(org.nsu.syspro.Graph)">graphToString</a></span>&#8203;(<a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&nbsp;graph)</code></th>
+<td class="colLast">
+<div class="block">Преобразование графа в строковое представление в формате:
+ Вершина-Соседи, упорядоченные по возрастанию.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(java.lang.Integer,java.lang.Integer)">removeEdge</a></span>&#8203;(java.lang.Integer&nbsp;source,
           java.lang.Integer&nbsp;destination)</code></th>
@@ -178,11 +210,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Удаляет ребро между двумя вершинами.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(java.lang.Integer)">removeVertex</a></span>&#8203;(java.lang.Integer&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Удаляет вершину из графа.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>static java.util.List&lt;java.lang.Integer&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#topologicalSort(org.nsu.syspro.Graph)">topologicalSort</a></span>&#8203;(<a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&nbsp;graph)</code></th>
+<td class="colLast">
+<div class="block">Topsort.</div>
 </td>
 </tr>
 </table>
@@ -238,11 +277,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>addEdge</h4>
 <pre class="methodSignature">void&nbsp;addEdge&#8203;(java.lang.Integer&nbsp;source,
              java.lang.Integer&nbsp;destination)</pre>
-<div class="block">Добавляет ребро между двумя вершинами.</div>
+<div class="block">Добавляет ребро между двумя вершинами.
+ При отсутвие вершин, добавляет их.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>source</code> - Исходная вершина.</dd>
-<dd><code>destination</code> - Конечная вершина.</dd>
+<dd><code>destination</code> - Целевая вершина.</dd>
 </dl>
 </li>
 </ul>
@@ -254,7 +294,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>removeEdge</h4>
 <pre class="methodSignature">void&nbsp;removeEdge&#8203;(java.lang.Integer&nbsp;source,
                 java.lang.Integer&nbsp;destination)</pre>
-<div class="block">Удаляет ребро между двумя вершинами.</div>
+<div class="block">Удаляет ребро между двумя вершинами.
+ Когда ребра нет, не делает ничего.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>source</code> - Исходная вершина.</dd>
@@ -265,16 +306,119 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="getNeighbors(java.lang.Integer)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getNeighbors</h4>
 <pre class="methodSignature">java.util.List&lt;java.lang.Integer&gt;&nbsp;getNeighbors&#8203;(java.lang.Integer&nbsp;vertex)</pre>
-<div class="block">Получает список соседей для заданной вершины.</div>
+<div class="block">Получает список соседей для заданной вершины.
+ если передвть NULL, вернет все вершины.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>vertex</code> - Вершина, для которой нужно получить соседей.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Список соседей.</dd>
+</dl>
+</li>
+</ul>
+<a id="fromFile(java.lang.String,org.nsu.syspro.Graph)">
+<!--   -->
+</a><a id="fromFile(java.lang.String,G)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fromFile</h4>
+<pre class="methodSignature">static&nbsp;&lt;G extends <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&gt;&nbsp;G&nbsp;fromFile&#8203;(java.lang.String&nbsp;filePath,
+                                    G&nbsp;graph)
+                             throws java.io.IOException</pre>
+<div class="block">Восстанавливает граф из файла.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>G</code> - Тип графа.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filePath</code> - Путь к файлу, содержащему строковое представление графа.</dd>
+<dd><code>graph</code> - Граф, в который будет восстановлено представление.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Восстановленный граф.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code> - Если возникла ошибка при чтении файла.</dd>
+</dl>
+</li>
+</ul>
+<a id="topologicalSort(org.nsu.syspro.Graph)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>topologicalSort</h4>
+<pre class="methodSignature">static&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;topologicalSort&#8203;(<a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&nbsp;graph)</pre>
+<div class="block">Topsort.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graph</code> - graph for sort.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>sorted graph or throw new IllegalArgumentException("Граф содержит цикл").</dd>
+</dl>
+</li>
+</ul>
+<a id="graphToString(org.nsu.syspro.Graph)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>graphToString</h4>
+<pre class="methodSignature">static&nbsp;java.lang.String&nbsp;graphToString&#8203;(<a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&nbsp;graph)</pre>
+<div class="block">Преобразование графа в строковое представление в формате:
+ Вершина-Соседи, упорядоченные по возрастанию.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graph</code> - Граф, реализующий интерфейс Graph.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Строковое представление графа.</dd>
+</dl>
+</li>
+</ul>
+<a id="fromString(java.lang.String,org.nsu.syspro.Graph)">
+<!--   -->
+</a><a id="fromString(java.lang.String,G)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fromString</h4>
+<pre class="methodSignature">static&nbsp;&lt;G extends <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&gt;&nbsp;G&nbsp;fromString&#8203;(java.lang.String&nbsp;graphString,
+                                      G&nbsp;graph)</pre>
+<div class="block">Восстанавливает граф из строкового представления.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>G</code> - Тип графа.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graphString</code> - Строковое представление графа.</dd>
+<dd><code>graph</code> - Граф, в который будет восстановлено представление.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Восстановленный граф.</dd>
+</dl>
+</li>
+</ul>
+<a id="equals(org.nsu.syspro.Graph,org.nsu.syspro.Graph)">
+<!--   -->
+</a><a id="equals(G,G)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>equals</h4>
+<pre class="methodSignature">static&nbsp;&lt;G extends <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a>&gt;&nbsp;boolean&nbsp;equals&#8203;(G&nbsp;gr1,
+                                        G&nbsp;gr2)</pre>
+<div class="block">Сравнивает на равенство два графа.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>G</code> - Тип графа.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>gr1</code> - граф1.</dd>
+<dd><code>gr2</code> - граф2.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>равны или не равны (bool).</dd>
 </dl>
 </li>
 </ul>

@@ -285,7 +285,7 @@ implements <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a></p
 <li class="blockList">
 <h4>removeVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeVertex&#8203;(java.lang.Integer&nbsp;vertex)</pre>
-<div class="block">Удаляет вершину из графа.</div>
+<div class="block">Удаляет вершину из графа. Если ее нет, не делает ничего.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#removeVertex(java.lang.Integer)">removeVertex</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in org.nsu.syspro">Graph</a></code></dd>
@@ -321,7 +321,7 @@ implements <a href="Graph.html" title="interface in org.nsu.syspro">Graph</a></p
 <h4>removeEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeEdge&#8203;(java.lang.Integer&nbsp;source,
                        java.lang.Integer&nbsp;destination)</pre>
-<div class="block">Удаляет ребро между двумя вершинами.</div>
+<div class="block">Удаляет ребро между двумя вершинами. При отсутствии не делает ничего.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Graph.html#removeEdge(java.lang.Integer,java.lang.Integer)">removeEdge</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in org.nsu.syspro">Graph</a></code></dd>
